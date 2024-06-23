@@ -1,0 +1,130 @@
+//Vairables
+$primaryColor: #4F1D07;
+$secondaryColor: #FFD9D9;
+$tertiaryColor: #B9B9B9;
+$headingColor: #fff;
+$primaryTransition: all 0.3s ease-in-out;
+.bgGradient {
+    background: linear-gradient(90deg, $tertiaryColor 0%, $secondaryColor 100%);
+}
+.bgGradientEllipse{
+    background: linear-gradient(270deg, #000000 0%, $primaryColor 40%, $primaryColor 100%);
+    position: absolute;
+    top: 0;
+    left: -90px;
+    aspect-ratio: 1 / 1;
+    // translateY: "-63%"
+    transform: translateY(-63%);
+    box-shadow: 14px 0px 10px rgba(0, 0, 0, 0.3);
+    right: -90px;
+}
+.ellipseSvg{
+    transform: scale(1.4);
+}
+#masterChef{
+    width: 40rem;
+    position: absolute;
+    bottom: 0;
+    top: unset;
+    left: 50%;
+    translate: -45% 60%;
+    opacity: 0;
+}
+#chefCharmFlex{
+    transform: scale(2);
+}
+
+.headingUnderline{
+    position: relative;
+    color: $headingColor;
+}
+
+
+.headingUnderline::after{
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 2px;
+    background: $headingColor;
+    box-shadow: 0 5px 5px rgb(0 0 0 / 80%);
+    transition: $primaryTransition;
+}
+.headingUnderline::before{
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 0px;
+    background: $headingColor;
+    transition: $primaryTransition;
+    z-index: -1;
+}
+.primaryBtn{
+    background: $secondaryColor;
+    color: $primaryColor;
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
+    border: 1px solid $primaryColor;
+    cursor: pointer;
+    transition: $primaryTransition;
+}
+#bgGif{
+    transform: scale(0.95);
+    opacity: 0;
+}
+@media screen and (min-width: 1024px){
+    .headingUnderline:hover{
+        cursor: pointer;
+        color: $primaryColor;
+    }
+    .headingUnderline:hover::after{
+        bottom: 38px;
+        box-shadow: none;
+    }
+    .headingUnderline:hover::before{
+        height: 35px;
+        background: $headingColor;
+    }
+    .primaryBtn:hover{
+        background: $primaryColor;
+        border: 1px solid $secondaryColor;
+        color: $secondaryColor;
+    }
+}
+@media screen and (max-width: 1280px) {
+    .bgGradientEllipse{
+        transform: translateY(-55%);
+    }
+    #masterChef{
+        width: 40rem;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .bgGradientEllipse{
+        transform: translateY(-45%);
+    }
+    #chefCharmFlex{
+        transform: scale(1.5);
+    }
+    #masterChef{
+        width: 38rem;
+    }
+}
+@media screen and (max-width: 700px) {
+    .bgGradientEllipse{
+        transform: translateY(-40%);
+    }
+    #chefCharmFlex{
+        transform: scale(1);
+    }
+    #masterChef{
+        min-width: 25rem;
+        width: 25rem;
+    }
+
+}
