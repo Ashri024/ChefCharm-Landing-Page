@@ -43,7 +43,7 @@ $primaryTransition: all 0.3s ease-in-out;
 .headingUnderline::after{
     content: "";
     position: absolute;
-    bottom: 3px;
+    bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
     width: 150%;
@@ -55,7 +55,7 @@ $primaryTransition: all 0.3s ease-in-out;
 .headingUnderline::before{
     content: "";
     position: absolute;
-    bottom: 3px;
+    bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
     width: 150%;
@@ -77,18 +77,56 @@ $primaryTransition: all 0.3s ease-in-out;
     transform: scale(0.95);
     opacity: 0;
 }
-@media screen and (min-width: 1024px){
-    .headingUnderline:hover{
-        cursor: pointer;
+.contentUl{
+    span{
+        position: relative;   
+    
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0%;
+            width: 0%;
+            height: 2px;
+            background: $primaryColor;
+            // box-shadow: 0 5px 5px rgb(0 0 0 / 80%);
+            transition: $primaryTransition;
+        }
+
+        &:hover::after{
+            width: 100%;
+        }
+    }
+    li{
+        transition: $primaryTransition;
+        &:hover{
+            color: $primaryColor;
+            transform: translateX(5px);
+        }
+
+    }
+    .contentIcons{
+        min-width: 2rem;
+    }
+    .contentIcons:hover{
         color: $primaryColor;
     }
-    .headingUnderline:hover::after{
-        bottom: 38px;
-        box-shadow: none;
-    }
-    .headingUnderline:hover::before{
-        height: 35px;
-        background: $headingColor;
+}
+
+@media screen and (min-width: 1024px){
+    .headingUnderline{
+        &:hover{
+               cursor: pointer;
+               color: $primaryColor;
+           }
+        &:hover::after{
+               bottom: 30px;
+               box-shadow: none;
+           }
+        &:hover::before{
+                height: 35px;
+                background: $headingColor;
+            }
     }
     .primaryBtn:hover{
         background: $primaryColor;
@@ -126,5 +164,10 @@ $primaryTransition: all 0.3s ease-in-out;
         min-width: 25rem;
         width: 25rem;
     }
-
+}
+@media screen and (max-width: 500px) {
+    .bgGradientEllipse{
+        transform: translateY(-20%);
+    }
+   
 }
