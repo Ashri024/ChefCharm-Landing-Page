@@ -4,9 +4,17 @@ $secondaryColor: #FFD9D9;
 $tertiaryColor: #B9B9B9;
 $headingColor: #fff;
 $primaryTransition: all 0.3s ease-in-out;
+
+// body {
+    // scroll-snap-type: y proximity;
+    // overflow-x:hidden;
+    // overflow-y: scroll;
+    // height: 100%;
+// }
 .bgGradient {
     background: linear-gradient(90deg, $tertiaryColor 0%, $secondaryColor 100%);
 }
+
 .bgGradientEllipse{
     background: linear-gradient(270deg, #000000 0%, $primaryColor 40%, $primaryColor 100%);
     position: absolute;
@@ -23,7 +31,7 @@ $primaryTransition: all 0.3s ease-in-out;
 }
 #masterChef{
     width: 40rem;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     top: unset;
     left: 50%;
@@ -33,7 +41,9 @@ $primaryTransition: all 0.3s ease-in-out;
 #chefCharmFlex{
     transform: scale(2);
 }
-
+#aboutChefCharm {
+    scroll-snap-align: start;
+}
 .headingUnderline{
     position: relative;
     color: $headingColor;
@@ -73,10 +83,6 @@ $primaryTransition: all 0.3s ease-in-out;
     cursor: pointer;
     transition: $primaryTransition;
 }
-#bgGif{
-    transform: scale(0.95);
-    opacity: 0;
-}
 .contentUl{
     span{
         position: relative;   
@@ -113,6 +119,38 @@ $primaryTransition: all 0.3s ease-in-out;
     }
 }
 
+#whatIs{
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: 500;
+    transition: $primaryTransition;
+}
+#whatIs{
+    & span{
+        text-decoration: underline $secondaryColor;
+        margin-left: 14rem;
+        font-size: 3rem;
+        color: $secondaryColor;
+    }
+}
+#aboutList, #aboutList2{
+    color: white;
+    margin-top: 3rem;
+    font-size: 1.3rem;
+    list-style: disc;
+
+    & li{
+        margin-bottom: 0.6rem;
+    }
+}
+
+#typewriter .Typewriter__cursor{
+    color: #fff;
+    font-size: 2.5rem;
+}
+.Typewriter__cursor{
+    color: #fff;
+}
 @media screen and (min-width: 1024px){
     .headingUnderline{
         &:hover{

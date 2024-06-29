@@ -2,9 +2,20 @@ import Lottie from 'react-lottie';
 import bgGif from "../assets/bgGif.json"
 import { PiArrowFatLineDownFill } from "react-icons/pi";
 import gsap from 'gsap'
-import { useEffect } from 'react';
-// import { useEffect } from 'react'
-function BackgroundGif() {
+import { useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { AnimationContext } from '../contexts';
+
+BackgroundGif.propTypes = {
+  height: PropTypes.string,
+}
+
+function BackgroundGif({height}) {
+    const {bgGifTopValues,screenCategory} = useContext(AnimationContext);
+    const calculateTop = useCallback(() => {
+      return bgGifTopValues[screenCategory]
+    }, [bgGifTopValues,screenCategory])
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -14,7 +25,7 @@ function BackgroundGif() {
         }
     };
     useEffect(() => {
-        gsap.to('#scrollArrow', {
+        gsap.to('.scrollArrow', {
             bottom: '-10px',
             duration: 1,
             yoyo: true,
@@ -24,10 +35,15 @@ function BackgroundGif() {
     }, [])
 
   return (
-    // <div className='h-screen max-h-[740px] 
-    // max-[700px]:max-h-[650px] z-0 absolute top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto'>
-    <div className='h-screen max-h-[740px] z-0 absolute top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden'>
-        <div className='absolute bottom-0 left-0 pointer-events-none w-full z-0' id="bgGif" >
+    <div className='z-0 fixed top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden' id="bgGif" style={{
+        height: height,
+        transform: "scale(0.95)",
+        opacity: 0
+    }}>
+        <div className='absolute left-0 pointer-events-none w-full z-0' style={{
+          // bottom:"100vh"
+          top: calculateTop()
+        }} id="bgGifLottie">
             <div className='w-full h-full object-cover object-center'>
             <Lottie options={defaultOptions}
             height={"100%"}
@@ -37,8 +53,10 @@ function BackgroundGif() {
             />
             </div>
         </div>
-        <div className=' absolute bottom-8 right-10 flex gap-2 items-center text-slate-600 text-xl font-semibold hover:text-black z-10 opacity-100 max-[700px]:hidden' id="scrollMore">
-          <PiArrowFatLineDownFill id='scrollArrow' style={{
+        <div className=' absolute right-10 flex gap-2 items-center text-slate-600 text-xl font-semibold hover:text-black z-10 opacity-0 translate-x-full max-[700px]:hidden' id="scrollMore" style={{
+          top:'88vh'
+        }}>
+          <PiArrowFatLineDownFill className='scrollArrow' style={{
             fontSize: '1.8rem',
             position: 'relative',
           }} />

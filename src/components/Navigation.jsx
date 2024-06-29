@@ -7,7 +7,7 @@ Navigation.propTypes = {
 function Navigation({setIsSidePanelOpen}) {
   
   return (
-    <div className=" w-full py-4 bg-transparent flex justify-between lg:justify-end items-center px-4 fixed top-0 z-20 gap-8">
+    <div className=" w-full py-4 bg-transparent flex justify-between lg:justify-end items-center px-4 fixed top-0 z-[1000] gap-8">
       {/* <div className="flex gap-4"> */}
             <ul className="gap-10 text-lg hidden lg:flex ">
             <li className="headingUnderline">Home</li>
