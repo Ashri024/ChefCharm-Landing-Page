@@ -249,7 +249,7 @@ html{
 }
 @media screen and (max-width: 700px) {
     .bgGradient{
-        background: linear-gradient(180deg, #000000 0%, $primaryColor 40%, $primaryColor 100%);
+        background: linear-gradient(263deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%);
     }
     .bgGradientEllipse{
         transform: translateY(-40%);

@@ -98,7 +98,7 @@ function AboutChefCharm2() {
       
      gsap.to('.bgGradientEllipse', { duration: 2, rotate: 90, ease: "power4.inOut", translateY: translateYValues[screenCategory] })
      ScrollTrigger.create({
-       animation: tl3,
+      //  animation: tl3,
        id: "aboutChefCharm",
        trigger: "#aboutChefCharm",
        start: "top 90%",
@@ -152,14 +152,12 @@ function AboutChefCharm2() {
        trigger: "#aboutChefCharm2",
        start: "top 90%",
        end: "bottom bottom",
-      //  markers: true,
        scrub: 1,
        toggleActions: "play pause resume restart",
 
        onEnter:async()=> {
         console.log('onEnter aboutChefCharm2')
        await onChangeEnterAnimation("<span id='whatIs'>What actually are its <br><span>Features</span> ?</span>",typewriter,typeRef)
-      //  gsap.killTweensOf(tl4)
         tl5= gsap.timeline()
        tl5.to(("#aboutList li"), { duration: 1, opacity: 0, translateX: "-100%", stagger:0.5 }, "<")
        .to(("#aboutList2 li"), { duration: 1, opacity: 1, translateX: 0, stagger:0.5 }, "<")
@@ -180,7 +178,6 @@ function AboutChefCharm2() {
        trigger: "#featuresPart1",
        start: "top 90%",
        end: "bottom bottom",
-       markers: true,
        scrub: 1,
        toggleActions: "play pause resume restart",
 
@@ -188,8 +185,24 @@ function AboutChefCharm2() {
         console.log('onEnter featuresPart1')
        await onChangeEnterAnimation("<span id='featureHeading'>Comprehensive Recipe Search:</span>",typewriter,typeRef)
        gsap.killTweensOf(tl3)
+       console.log("screencategory",screenCategory)
+       if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+        gsap.to(".bgGradient",{
+          duration: 2,
+          ease: "power4.out",
+          background: "linear-gradient(266deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)"
+        }).restart()
         tl7= gsap.timeline()
-       tl7.to(".bgGradientEllipse", { duration: 1, rotate: 270, ease: "power4.inOut",}, "<")
+       }else{
+       gsap.to(".bgGradient",{
+          duration: 2,
+          ease: "power4.out",
+          background: "linear-gradient(90deg, #FFDCE5 0%, #A0B9FF 100%)"
+        }).restart()
+      }
+        tl7= gsap.timeline()
+       tl7.to(".bgGradientEllipse", { duration: 1, rotate: 270, ease: "power4.inOut",
+        background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)"}, "<")
        .to(("#mockup1"), { duration: 1, opacity: 0, translateY: "-100%", scale:0.2 }, "<")
        .to(("#mockup2"), { duration: 1, opacity: 1, translateX: "0", scale:0.7 }, "<")
        .to(("#aboutList2 li"), { duration: 1, opacity: 0, translateX: "-100%", stagger:0.5 }, "<")
@@ -199,9 +212,22 @@ function AboutChefCharm2() {
        onLeaveBack:async()=> {
         console.log('onLeaveBack featuresPart1')
         await onChangeEnterAnimation("<span id='whatIs'>What actually are its <br><span>Features</span> ?</span>",typewriter,typeRef)
+        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+          gsap.to(".bgGradient",{
+            duration: 2,
+            ease: "power4.out",
+            background: "linear-gradient(263deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)"
+          }).restart()
+        }else{
+        gsap.to(".bgGradient",{
+          duration: 2,
+          ease: "power4.out",
+          background: "linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 100%)"
+        }).restart()}
         tl8 = gsap.timeline()
-        // gsap.killTweensOf(tl5)
-        tl8.to((".bgGradientEllipse"), { duration: 1, rotate: 180, ease: "power4.inOut",}, "<")
+        tl8.to((".bgGradientEllipse"), { duration: 1, rotate: 180, ease: "power4.inOut",
+          background:"linear-gradient(270deg, #000000 0%, #4F1D07 40%, #4F1D07 100%)"
+        }, "<")
         .to(("#mockup2"), { duration: 1, opacity: 0, translateX: "-100%", scale:1 }, "<")
         .to(("#mockup1"), { duration: 1, opacity: 1, translateY: "0", scale:1 }, "<")
         .to(("#aboutList3 li"), { duration: 1, opacity: 0, translateX: "100%", stagger:0.5 }, "<")
@@ -221,8 +247,8 @@ function AboutChefCharm2() {
         <img id="mockup2" src={HomePage} alt="Chef Charm" className="w-full z-20 h-full object-cover object-center absolute top-0 left-0 opacity-0 -translate-x-full" />
       </div>
       <div className='w-full min-[700px]:w-2/3 max-w-[540px]' style={{ height: "90%",position:"relative",padding:"1rem"}}>
-        <div ref={typeRef} className="opacity-0 translate-x-full relative top-8 left-0 min-w-[450px]max-[700px]:min-w-[350px] max-[700px]:top-0" id="typewriter"/>
-        <div className='relative mt-2'>
+        <div ref={typeRef} className="opacity-0 translate-x-full relative top-12 left-0 min-w-[450px] max-[1024px]:min-w-[350px] max-[700px]:top-0" id="typewriter"/>
+        <div className='relative mt-2 min-[700px]:mt-8'>
           <ul id="aboutList" className="absolute top-0 left-0 max-w-[90%] max-[700px]:max-w-full">
             <li className='opacity-0 translate-x-full mb-4'>It is an innovative recipe web application designed to elevate your cooking experience. </li>
             <li className='opacity-0 translate-x-full mb-4'>It offers a seamless and interactive way to discover, create, and manage recipes, leveraging advanced technologies.</li>
