@@ -35,13 +35,12 @@ function BackgroundGif({height}) {
     }, [])
 
   return (
-    <div className='z-0 fixed top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden' id="bgGif" style={{
+    <div className='z-0 fixed top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden max-[700px]:hidden' id="bgGif" style={{
         height: height,
         transform: "scale(0.95)",
         opacity: 0
     }}>
         <div className='absolute left-0 pointer-events-none w-full z-0' style={{
-          // bottom:"100vh"
           top: calculateTop()
         }} id="bgGifLottie">
             <div className='w-full h-full object-cover object-center'>

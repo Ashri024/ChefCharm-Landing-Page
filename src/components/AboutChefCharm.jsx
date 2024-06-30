@@ -1,377 +1,205 @@
-import  { useCallback, useEffect, useRef} from "react";
-import gsap from "gsap";
-import { ScrollToPlugin, ScrollTrigger } from "gsap/all";
-import PropTypes from "prop-types";
-import Typewriter from "typewriter-effect/dist/core"; // Ensure you are importing the correct module
+import gsap from 'gsap'
+import {  useEffect, useRef,useContext } from 'react';
+import { AnimationContext } from '../contexts';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import LaptopMockup from "../assets/Laptop.png";
+import { Back } from 'gsap/all';
+import Typewriter from 'typewriter-effect/dist/core';
 
-gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
-
-AboutChefCharm.propTypes = {
-  introTl: PropTypes.object
-};
-
-function AboutChefCharm({ introTl }) {
-  const typeRef = useRef(null);
-  const typeRef2 = useRef(null);
-  const para1 = useRef(null);
-  const para2 = useRef(null);
-  const para3 = useRef(null);
-  const para4 = useRef(null);
-  const para5 = useRef(null);
-
-  function startTypewriter(ref, text) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (ref.current) {
-          // Clear existing text
-          gsap.to(ref.current, { opacity: 1, duration: 0.5, translateX: "0%",})
-          // Initialize Typewriter
-          const whatIs = new Typewriter(ref.current, {
-            loop: false,
-            delay: 40
-          });
-  
-          // Use Typewriter to type the string
-          whatIs.typeString(text)
-            .callFunction(() => {
-              whatIs.stop();
-              const cursorElement = ref.current.querySelector('.Typewriter__cursor');
-              if (cursorElement) {
-                cursorElement.style.display = 'none';
-              }
-              resolve(); // Resolve the promise here
-            })
-            .start();
-        } else {
-          reject(new Error("typeRef.current is not available")); // Reject the promise if typeRef.current is not available
-        }
-      }, 2000); // 2000 milliseconds delay
-    });
-  }
-  const addAnimationPara = useCallback((ref) => {
-    gsap.to(ref.current, {
-      opacity: 1,
-      duration: 0.5,
-      translateX: "0%",
-      ease: "power1.out",
-    });
-  }, []);
-  const descArr = useCallback(() => ([
-    "It is an innovative recipe web application designed to elevate your cooking experience.",
-    "It offers a seamless and interactive way to discover, create, and manage recipes, leveraging advanced technologies.",
-    "It uses AI to bring culinary inspiration to your fingertips."
-  ]), []); 
-
-  const descArr2 = useCallback(() => ([
-    "Whether you're a professional chef or an enthusiastic home cook, ChefCharm offers a comprehensive suite of features to streamline your recipe discovery, creation, and organization.",
-    "Let's delve into the key features that make ChefCharm a must-have tool for every cooking enthusiast."]), []);
-  function subParaWriter(text, ref) {
-      return new Promise((resolve) => {
-          const whatIs = new Typewriter(ref.current, {
-            loop: false,
-            delay: 10
-          });
+gsap.registerPlugin(ScrollTrigger);
+function bgGifY(screenCategory) {
+  if(screenCategory === 'mq500') {
     
-          // Use Typewriter to type the string
-          whatIs.typeString(`<span class="aboutLi">${text}</span>`)
-            .callFunction(() => {
-              whatIs.stop();
-              const cursorElement = ref.current.querySelector('.Typewriter__cursor');
-              if (cursorElement) {
-                cursorElement.style.display = 'none';
-              }
-              resolve(); // Resolve the promise here
-            })
-            .start();
-      });
-    }
-        
-// Inside your component
-const startParaTypewriter = useCallback(async (mode="first") => {
-  await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 5 seconds before starting
-
-  if(mode==="first"){
-  gsap.to("#aboutList", {
-    opacity: 1,
-    duration: 0.5,
-    translateX: "0%",
-    ease: "power1.out",
-  });
-  let arr = descArr();
-  if (arr.length > 0) {
-    addAnimationPara(para1);
-    await subParaWriter(arr[0], para1); // Wait for the first paragraph to complete
-    if (arr.length > 1) {
-      addAnimationPara(para2);
-      await subParaWriter(arr[1], para2); // Wait for the second paragraph to complete
-      if (arr.length > 2) {
-        addAnimationPara(para3);
-        await subParaWriter(arr[2], para3); // Wait for the third paragraph to complete
-      }
-    }
-  }}else{
-    gsap.to("#aboutList2", {
-      opacity: 1,
-      duration: 0.5,
-      translateX: "0%",
-      ease: "power1.out",
-    });
-    let arr = descArr2();
-    if (arr.length > 0) {
-      addAnimationPara(para4);
-      await subParaWriter(arr[0], para4); // Wait for the first paragraph to complete
-      if (arr.length > 1) {
-        addAnimationPara(para5);
-        await subParaWriter(arr[1], para5); // Wait for the second paragraph to complete
-      }
-    }
+    let bgGifTop = "60vh";
+    let bgGifTopIntro = "40vh";
+    return {bgGifTop,bgGifTopIntro}
+  }else if(screenCategory === 'mq700') {
+    let bgGifTop = "55vh";
+    let bgGifTopIntro = "40vh";
+    return {bgGifTop,bgGifTopIntro}
   }
-}, [descArr, addAnimationPara, descArr2]); // Add any other dependencies here
-function resetParaStates(mode="first") {
+  else if(screenCategory === 'mq1024') {
+    let bgGifTop = "50vh";
+    let bgGifTopIntro = "50vh";
+    return {bgGifTop,bgGifTopIntro}
+  }
+  else if(screenCategory === 'mq1280') {
+    let bgGifTop = "40vh";
+    let bgGifTopIntro = "60vh";
+    return {bgGifTop,bgGifTopIntro}
+  }
+  else {
+    let bgGifTop = "30vh";
+    let bgGifTopIntro = "70vh";
+    return {bgGifTop,bgGifTopIntro}
+  }
+}
+function typeWriting(text, typeRef, typewriter){
   return new Promise((resolve, reject) => {
-    const headRef = mode==="first"?typeRef.current:typeRef2.current;
-    const para1Ref = mode==="first"?para1.current:para4.current;
-    const para2Ref = mode==="first"?para2.current:para5.current;
-    const para3Ref = mode==="first"?para3.current:true;
-    const arr = mode==="first"?[para1Ref,para2Ref,para3Ref]:[para1Ref,para2Ref];
-    if (headRef && para1Ref && para2Ref && para3Ref) {
-      // Create a new GSAP timeline
-const tl = gsap.timeline();
-
-gsap.killTweensOf([headRef, ...arr])
-tl.to(headRef, {
-  duration: 0.5,
-  opacity: 0,
-  translateX: "100%",
-  ease: "power1.out",
-  onComplete: function() {
-    this.innerHTML = ''; // Clear innerHTML after animation completes
-  }})
-tl.to(arr, {
-  opacity: 0, // Target opacity
-  duration: 0.5,
-  translateX: "100%", // Duration of each animation
-  stagger: {
-    each: 0.2, // Time between the start of each animation
-    onComplete: function() {
-      this.targets().forEach(target => {
-        target.innerHTML = ''; // Clear innerHTML after animation completes
-      });
+    if (!typewriter) {
+      reject('Typewriter not initialized');
+      return;
     }
-  },
-  ease: "power1.out", // Easing function
-});
-
-// Add animation for laptopMockup after the staggered animations
-if(mode === "first"){
-tl.to("#laptopMockup", {
-  duration: 0.5,
-  opacity: 0,
-  ease: "back.inOut(1.7)",
-  translateX: "-100%",
-  onComplete: resolve, // Resolve the promise after the animation completes
-});
-}else{
-  tl.call(resolve)
-}
-    } else {
-      reject(new Error("One or more elements do not exist."));
-    }
+    typewriter.callFunction(() => {
+      const cursorElement = typeRef.current.querySelector('.Typewriter__cursor');
+      if (cursorElement) {
+        cursorElement.style.display = 'inline-block';
+      }
+    }).deleteAll(5)
+      .typeString(text)
+      .callFunction(() => {
+        const cursorElement = typeRef.current.querySelector('.Typewriter__cursor');
+        if (cursorElement) {
+          cursorElement.style.display = 'none';
+        }
+      })
+      .callFunction(() => {
+        resolve(); // Resolve the promise after all operations are done
+      })
+      .start();
   });
 }
-  useEffect(()=>{
-    ScrollTrigger.create({
-      trigger: "#aboutChefCharm",
-      start: "top 80%",
-      end: "bottom bottom",
-      // markers: true,
-      toggleActions: "restart pause reverse pause",
-      onEnter: async() => {
-        console.log("entering the scroll area... scrolling to the aboutchefcharm");
-        await resetParaStates("first")
-          gsap.to(window, {
-            scrollTo: { y: "#aboutChefCharm", offsetY: 0 },
-            duration: 1,
-          });
-      },
-      onLeaveBack:async()=>{
-        console.log("leaving");
-        await resetParaStates("first")
-        gsap.to(window, {
-          scrollTo: { y: "#chefCharmIntro", offsetY: 0 },
-          duration: 1,
-        });
-      }
-    });
-   
-  },[]);
-
-  useEffect(() => {
-    
-    
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#aboutChefCharm",
-        start: "top bottom",
-        end: "bottom bottom",
-        scrub: 1,
-        onEnter:async() => {
-          if (introTl && introTl.reverse) {
-            await introTl.reverse();
-            console.log("reversing");
-            document.querySelector('html').style.overflowY = 'auto';
-          }
-        },
-        onLeaveBack: async() => {
-          if (introTl && introTl.play) {
-            await resetParaStates()
-            introTl.play();
-          }
-        }
-      }
-    });
-
-    function bgGifY() {
-      if (window.matchMedia("(min-width: 1400px)").matches) {
-        return "70%";
-      } else if (window.matchMedia("(min-width: 1280px)").matches) {
-        return "40%";
-      }
-      return "10%";
-    }
-
-    tl.to(".bgGradientEllipse", {
-      duration: 4,
-      rotate: 180,
-      ease: "linear",
-      translateX: "40%",
-      translateY: "-20%"
-    }, "<")
-      .to("#bgGifLottie", {
-        duration: 4,
-        ease: "linear",
-        top:"55vh",
-        rotate: 90,
-        translateX: "-37%",
-        translateY: bgGifY()
-      }, "<")
-      .to("#bgGif",{
-        duration: 2,
-        top:"-2rem",
-        opacity:1,
-        ease: "power1.in"
-      }, "<")
-      
-
-    gsap.to("#laptopMockup", {
-      duration: 2,
-      opacity: 1,
-      ease: "back.inOut(1.7)",
-      translateX: "0%",
-      delay: 1,
-      scrollTrigger: {
-        trigger: "#aboutChefCharm",
-         toggleActions: "restart pause restart none"
-      }
-    });
- 
-
-
-
-ScrollTrigger.create({
-  trigger: "#aboutChefCharm",
-  start: "top bottom",
-  end: "bottom bottom",
-  markers: true,
- toggleActions: "restart pause resume reverse",
-  onEnter: async() => {
-     // 2000 milliseconds delay
-    console.log("entering aboutchefcharm");
-    await startTypewriter(typeRef,"<span id='whatIs'>What actually is<br><span>ChefCharm</span> ?</span>")
-    startParaTypewriter()
-  },
+  function onChangeEnterAnimation(text,typewriter,typeRef){
+    return typeWriting(text,typeRef,typewriter)
+  }
+function onPageEnterAnimation(typeRef, screenCategory){
+  let tl4= gsap.timeline()
   
-});
-  }, [introTl, startParaTypewriter]);
+          tl4.to('.bgGradientEllipse', { duration: 2, rotate: 180, ease: "power4.inOut", translateX: "40%",translateY: "-20%" })
+          .to("#bgGifLottie", { duration: 2, rotate:90,top:bgGifY(screenCategory).bgGifTopIntro,translateX:"-37%",translateY: 0 },"<")
+          .to("#bgGif",{
+            duration: 2,
+            top:"-6rem",
+            opacity:1,
+            ease: "power1.in"
+          }, "<")
+          .to(typeRef.current, { duration: 1, opacity: 1, translateX: 0, ease:Back.easeInOut.config(1.7) },"<" )
+          .to(("#aboutList li"), { duration: 1, opacity: 1, translateX: 0, stagger:0.5 }, "<")
+  return {tl4}
+}
 
-  useEffect(()=>{
-    ScrollTrigger.create({
-      trigger: "#aboutPart2",
-      start: "top 80%",
-      end: "bottom bottom",
-      // markers: true,
-      toggleActions: "restart pause reverse pause",
-      onEnter: async() => {
-        gsap.to(window, {
-          scrollTo: { y: "#aboutPart2", offsetY: 0 },
-          duration: 1,
-        });
-      },
-      onLeaveBack:()=>{
-        gsap.to(window, {
-          scrollTo: { y: "#aboutChefCharm", offsetY: 0 },
-          duration: 1,
-        });
-      }
+function AboutChefCharm2() {
+  const {screenCategory,translateYValues,tl2Global} = useContext(AnimationContext);
+  const typeRef = useRef(null);
+  
+  useEffect(() => {
+    if(!tl2Global) return;
+    let typewriter= new Typewriter(typeRef.current, {
+      loop: false,
+      delay:10
+    });
+    const tl3 = gsap.timeline({
+      defaults: { ease: "power4.inOut" },
     })
-    ScrollTrigger.create({
-      trigger: "#aboutPart2",
-      start: "top 80%",
-      end: "bottom bottom",
-      // markers: true,
-      toggleActions: "restart pause reverse pause",
-      onEnter: async() => {
-        console.log("entering");
+    let tl4="";
+    let tl5=""
+    let tl6=""
+
+      tl3.to("#laptopMockup", { duration: 2, opacity: 1, translateX: 0, ease:Back.easeInOut.config(1.7) },"<")
+      
+     gsap.to('.bgGradientEllipse', { duration: 2, rotate: 90, ease: "power4.inOut", translateY: translateYValues[screenCategory] })
+     ScrollTrigger.create({
+       animation: tl3,
+       id: "aboutChefCharm",
+       trigger: "#aboutChefCharm",
+       start: "top 90%",
+       end: "bottom bottom",
+       scrub: 1,
+       toggleActions: "play pause resume restart",
+       onEnter: async() => {
+        let obj= onPageEnterAnimation(typeRef,screenCategory)
+         tl4=obj.tl4
+         console.log('onEnter aboutChefCharm')
+         await onChangeEnterAnimation("<span id='whatIs'>What actually is <br><span>ChefCharm</span> ?</span>",typewriter,typeRef)
+         await tl2Global.timeScale(2).reverse()
+         gsap.to("#aboutList", { duration: 1, opacity: 1, }, "<")
+         tl3.pause()
+       },
+       onLeaveBack: async() => {
+        console.log('onLeaveBack aboutChefCharm')
+        tl3.timeScale(2).reverse()
+        typewriter.deleteAll(1);
+        console.log("progress tl4: ",tl4.progress())
+
+        gsap.killTweensOf(tl4)
+        if(tl6)
+          gsap.killTweensOf(tl6)
+
+        let tl4reverse = gsap.timeline()
+        tl4reverse.to("#aboutList li", { duration: 1, opacity: 0, translateX: "100%", stagger:0.5 }, "<")
+        .to(typeRef.current, { duration: 1, opacity: 0, translateX: "100%", ease:Back.easeInOut.config(1.7) },"<" )
+        .to('.bgGradientEllipse', { duration: 2, rotate: 90, ease: "power4.inOut", translateY: translateYValues[screenCategory],translateX:0 }, "<")
+        .to("#bgGifLottie", { duration: 2, rotate:0,top:bgGifY(screenCategory).bgGifTop,translateX:0,translateY: 0 },"<")
+        .to("#bgGif",{
+          duration: 2,
+          top:0,
+          opacity:0,
+          ease: "power1.in",
+        }, "<")
+        .to("#aboutList", { duration: 1, opacity: 0, }, "<")
         
-        const tl = gsap.timeline();
-          tl.to(typeRef.current, { opacity: 0, duration: 0.5, translateX: "-100%",})
-          .to(typeRef2.current, { opacity: 1, duration: 0.5, translateX: "0%"})
-          .to("#aboutList", { opacity: 0, duration: 0.5, translateX: "-100%",})
-          .to("#aboutList2", { opacity: 1, duration: 0.5, translateX: "0%",})
-          .call(async() => {
-            await startTypewriter(typeRef2,"<span id='whatIs'>What actually are its<br><span>Features</span> ?</span>")
-            startParaTypewriter("second")
-            await resetParaStates("first")
-      })},
+        tl2Global.play()
+      },
+       onEnterBack: async() => {
+        tl3.pause()
+       },
+     });
 
-      onLeaveBack:()=>{
-        console.log("leaving");
-        const tl = gsap.timeline();
-          tl.to(typeRef2.current, { opacity: 0, duration: 0.5, translateX: "100%",})
-          .to(typeRef.current, { opacity: 1, duration: 0.5, translateX: "0%",})
-          .to("#aboutList2", { opacity: 0, duration: 0.5, translateX: "100%",})
-          .to("#aboutList", { opacity: 1, duration: 0.5, translateX: "0%",}).call(async()=>{
-            startParaTypewriter("first")
-           await resetParaStates("second")
-          })
-      }
-    })
+     ScrollTrigger.create({
+      id: "aboutChefCharm2",
+       trigger: "#aboutChefCharm2",
+       start: "top 90%",
+       end: "bottom bottom",
+       markers: true,
+       scrub: 1,
+       toggleActions: "play pause resume restart",
 
-  },[startParaTypewriter])
+       onEnter:async()=> {
+        console.log('onEnter aboutChefCharm2')
+       await onChangeEnterAnimation("<span id='whatIs'>What actually are its <br><span>Features</span> ?</span>",typewriter,typeRef)
+      //  gsap.killTweensOf(tl4)
+        tl5= gsap.timeline()
+       tl5.to(("#aboutList li"), { duration: 1, opacity: 0, translateX: "-100%", stagger:0.5 }, "<")
+       .to(("#aboutList2 li"), { duration: 1, opacity: 1, translateX: 0, stagger:0.5 }, "<")
+      },
+       onLeaveBack:async()=> {
+        console.log('onLeaveBack aboutChefCharm2')
+        await onChangeEnterAnimation("<span id='whatIs'>What actually is <br><span>ChefCharm</span> ?</span>",typewriter,typeRef)
+        tl6 = gsap.timeline()
+        // gsap.killTweensOf(tl5)
+        tl6.to(("#aboutList2 li"), { duration: 1, opacity: 0, translateX: "100%", stagger:0.5 }, "<")
+        .to(("#aboutList li"), { duration: 1, opacity: 1, translateX: 0, stagger:0.5 }, "<")
+       },
+       onLeave:()=>{
+        console.log('onLeave aboutChefCharm2')
+       }
+     })
+  },[screenCategory, tl2Global, translateYValues])
+
   return (
-    <div className="h-screen transparent w-full relative z-50" id="aboutChefCharm">
-    <div className="h-screen transparent w-full fixed z-50 overflow-hidden flex items-center justify-around top-0 left-0" >
-      <div id="laptopMockup" style={{ width: "42rem", translate: "-100% 0",opacity:0 }} className="relative -left-2">
-        <img src={LaptopMockup} alt="Chef Charm" className="w-full z-20 h-full object-cover object-center relative" />
+    <div className="h-screen opacity-100 transparent w-full relative z-50" id="aboutChefCharm">
+      <div className="h-screen transparent w-full fixed z-50 overflow-hidden flex items-center justify-around top-0 left-0" >
+      <div id="laptopMockup" style={{ width: "42rem", translate: "-100% 0",opacity:0 }} className="relative -left-2 h-[450px] max-[1024px]:h-[350px]">
+        <img id="mockup1" src={LaptopMockup} alt="Chef Charm" className="w-full z-20 h-full object-cover object-center absolute top-0 left-0" />
       </div>
       <div style={{ height: "90%", paddingTop: "7rem",width:"540px",position:"relative" }}>
-        <div ref={typeRef} className="opacity-0 translate-x-full absolute top-32 left-0" id="typewriter"/>
-        <div ref={typeRef2} className="opacity-0 translate-x-full absolute top-32 left-0" id="typewriter2"/>
-        <ul id="aboutList" className="absolute bottom-40 opacity-0 translate-x-full">
-          <li ref={para1} className="opacity-0 translate-x-full"></li>
-          <li ref={para2} className="opacity-0 translate-x-full"></li>
-          <li ref={para3} className="opacity-0 translate-x-full"></li>
-        </ul>
-        <ul id="aboutList2" className="absolute bottom-40 opacity-0 translate-x-full">
-          <li ref={para4} className="opacity-0 translate-x-full"></li>
-          <li ref={para5} className="opacity-0 translate-x-full"></li>
-        </ul>
+        <div ref={typeRef} className="opacity-0 translate-x-full relative top-8 left-0" id="typewriter"/>
+        <div className='relative'>
+          <ul id="aboutList" className="absolute top-0 left-0 max-w-[90%] max-[700px]:max-w-full">
+            <li className='opacity-0 translate-x-full mb-2'>It is an innovative recipe web application designed to elevate your cooking experience. </li>
+            <li className='opacity-0 translate-x-full mb-2'>It offers a seamless and interactive way to discover, create, and manage recipes, leveraging advanced technologies.</li>
+            <li className='opacity-0 translate-x-full mb-2'>It uses AI to bring culinary inspiration to your fingertips.</li>
+          </ul>
+          <ul id="aboutList2" className="absolute top-0 left-0 max-w-[90%] max-[700px]:max-w-full">
+            <li className='opacity-0 translate-x-full mb-2'>Whether you&apos;re a professional chef or an enthusiastic home cook, ChefCharm offers a comprehensive suite of features to streamline your recipe discovery, creation, and organization. </li>
+            <li className='opacity-0 translate-x-full mb-2'>Let&apos;s delve into the key features that make ChefCharm a must-have tool for every cooking enthusiast</li>
+          </ul>
+        </div>
       </div>
       
     </div>
     </div>
-  );
+  )
 }
 
-export default AboutChefCharm;
+export default AboutChefCharm2

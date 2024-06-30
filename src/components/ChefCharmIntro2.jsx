@@ -58,9 +58,7 @@ function ChefCharmIntro2() {
         start: "top 90%",
         id: "introChefCharm",
         end: "bottom bottom",
-        // markers: true,
         scrub: 1,
-        // pin: true,
         
         onEnter: () => {
           console.log('onEnter')
@@ -83,19 +81,17 @@ function ChefCharmIntro2() {
     }, [screenCategory, tl2Global, translateYValues]); 
   return (
     <div className="relative z-10 text-white h-screen p-4 overflow-hidden max-w-[1600px] mx-auto opacity-100" id="chefCharmIntro">
-      <div className="fixed top-44 w-full text-center text-white font-bold -translate-y-full opacity-0 flex gap-6 items-center left-1/2 -translate-x-1/2 justify-center" style={{
-        fontSize: '4rem',
+      <div className="fixed top-44 w-full text-center text-white font-bold -translate-y-full opacity-0 flex gap-6 max-[700px]:gap-0 items-center left-1/2 -translate-x-1/2 justify-center p-4" style={{
         zIndex: 100
       }} id={"getStarted"}>
         <PiArrowFatLineDownFill className='scrollArrow' style={{
-            fontSize: '4rem',
             color: 'white',
             position: 'relative',
           }} />
         Scroll To Get Started
       </div>
-      <img src={welcomeSvg} alt="Welcome to" className='w-48 max-[700px]:w-40 top-20 left-1/2 -translate-x-1/2 max-[700px]:top-28 fixed opacity-0' id='welcome'/>
-        <div className="flex justify-center items-center fixed w-full top-48 gap-12 max-[700px]:gap-0" id="chefCharmFlex">
+      <img src={welcomeSvg} alt="Welcome to" className='w-48 max-[700px]:w-40 top-20 left-1/2 -translate-x-1/2 max-[700px]:top-40 fixed opacity-0' id='welcome'/>
+        <div className="flex justify-center items-center fixed w-full top-48 gap-12 max-[700px]:gap-0 left-0" id="chefCharmFlex">
             <img id="chefSvg" src={ChefSvg} alt="Chef" className='w-48 max-[700px]:w-40 relative left-[-100px] opacity-0'/>
             <img id="charmSvg" src={CharmSvg} alt="Charm" className='w-48 max-[700px]:w-40 relative left-[100px] opacity-0'/>
         </div>

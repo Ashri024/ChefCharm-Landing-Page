@@ -33,7 +33,7 @@ function NavigationOptions({setIsSidePanelOpen}) {
     }, [])
 
   return (
-    <div className="absolute z-30 top-0 left-0 w-full h-full">
+    <div className="fixed z-[1000] top-0 left-0 w-full h-full">
         <div className="w-full h-full bg-black opacity-50" onClick={()=>setIsSidePanelOpen(false)}></div>
         <div className=" w-full h-auto  absolute top-0 left-0 flex flex-col justify-center items-left gap-4 rounded-md">
             <ul className="text-lg font-semibold">

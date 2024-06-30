@@ -17,7 +17,7 @@ function AnimationProvider({children}) {
   const bgGifTopValues={
     default:"40vh",
     mq1280:"50vh",
-    mq1024:"55vh",
+    mq1024:"60vh",
     mq700:"55vh",
     mq500:"75vh"
   }
