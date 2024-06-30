@@ -109,10 +109,10 @@ function AboutChefCharm2() {
        onEnter: async() => {
         let obj= onPageEnterAnimation(typeRef,screenCategory)
          tl4=obj.tl4
+         gsap.to("#aboutList", { duration: 1, opacity: 1, }, "<")
          console.log('onEnter aboutChefCharm')
          await onChangeEnterAnimation("<span id='whatIs'>What actually is <br><span>ChefCharm</span> ?</span>",typewriter,typeRef)
-         await tl2Global.timeScale(2).reverse()
-         gsap.to("#aboutList", { duration: 1, opacity: 1, }, "<")
+         await tl2Global.timeScale(3).reverse()
          tl3.pause()
        },
        onLeaveBack: async() => {
@@ -178,21 +178,21 @@ function AboutChefCharm2() {
 
   return (
     <div className="h-screen opacity-100 transparent w-full relative z-50" id="aboutChefCharm">
-      <div className="h-screen transparent w-full fixed z-50 overflow-hidden flex items-center justify-around top-0 left-0" >
-      <div id="laptopMockup" style={{ width: "42rem", translate: "-100% 0",opacity:0 }} className="relative -left-2 h-[450px] max-[1024px]:h-[350px]">
+      <div className="h-screen transparent w-full fixed z-50 overflow-hidden flex items-center justify-around top-0 left-0 max-[700px]:flex-col pt-12" >
+      <div id="laptopMockup" style={{ translate: "-100% 0",opacity:0 }} className="relative left-6 sm:-left-2 h-[550px] max-[1024px]:h-[450px] min-[700px]:-top-12">
         <img id="mockup1" src={LaptopMockup} alt="Chef Charm" className="w-full z-20 h-full object-cover object-center absolute top-0 left-0" />
       </div>
-      <div style={{ height: "90%", paddingTop: "7rem",width:"540px",position:"relative" }}>
-        <div ref={typeRef} className="opacity-0 translate-x-full relative top-8 left-0" id="typewriter"/>
-        <div className='relative'>
+      <div className='w-full min-[700px]:w-2/3 max-w-[540px]' style={{ height: "90%",position:"relative",padding:"1rem"}}>
+        <div ref={typeRef} className="opacity-0 translate-x-full relative top-8 left-0 min-w-[450px]max-[700px]:min-w-[350px] max-[700px]:top-0" id="typewriter"/>
+        <div className='relative mt-2'>
           <ul id="aboutList" className="absolute top-0 left-0 max-w-[90%] max-[700px]:max-w-full">
-            <li className='opacity-0 translate-x-full mb-2'>It is an innovative recipe web application designed to elevate your cooking experience. </li>
-            <li className='opacity-0 translate-x-full mb-2'>It offers a seamless and interactive way to discover, create, and manage recipes, leveraging advanced technologies.</li>
-            <li className='opacity-0 translate-x-full mb-2'>It uses AI to bring culinary inspiration to your fingertips.</li>
+            <li className='opacity-0 translate-x-full mb-4'>It is an innovative recipe web application designed to elevate your cooking experience. </li>
+            <li className='opacity-0 translate-x-full mb-4'>It offers a seamless and interactive way to discover, create, and manage recipes, leveraging advanced technologies.</li>
+            <li className='opacity-0 translate-x-full mb-4'>It uses AI to bring culinary inspiration to your fingertips.</li>
           </ul>
           <ul id="aboutList2" className="absolute top-0 left-0 max-w-[90%] max-[700px]:max-w-full">
-            <li className='opacity-0 translate-x-full mb-2'>Whether you&apos;re a professional chef or an enthusiastic home cook, ChefCharm offers a comprehensive suite of features to streamline your recipe discovery, creation, and organization. </li>
-            <li className='opacity-0 translate-x-full mb-2'>Let&apos;s delve into the key features that make ChefCharm a must-have tool for every cooking enthusiast</li>
+            <li className='opacity-0 translate-x-full mb-4'>Whether you&apos;re a professional chef or an enthusiastic home cook, ChefCharm offers a comprehensive suite of features to streamline your recipe discovery, creation, and organization. </li>
+            <li className='opacity-0 translate-x-full mb-4'>Let&apos;s delve into the key features that make ChefCharm a must-have tool for every cooking enthusiast</li>
           </ul>
         </div>
       </div>
