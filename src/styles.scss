@@ -135,7 +135,7 @@ html{
     font-size: 2.3rem;
     color: $secondaryColor;
 }
-#aboutList, #aboutList2, #aboutList3{
+#aboutList, #aboutList2, #aboutList3, .featuresAboutList{
     color: white;
     margin-top: 3rem;
     font-size: 1.3rem;
@@ -200,7 +200,7 @@ html{
     #typewriter .Typewriter__cursor{
         font-size: 2rem;
     }
-    #aboutList, #aboutList2, #aboutList3{
+    #aboutList, #aboutList2, #aboutList3, .featuresAboutList{
         font-size: 1.1rem;
     }
     #laptopMockup{
@@ -230,7 +230,7 @@ html{
             font-size: 2.5rem;
         }
     }
-    #aboutList, #aboutList2, #aboutList3{
+    #aboutList, #aboutList2, #aboutList3, .featuresAboutList{
         font-size: 1.1rem;
         margin-top: 2rem;
     }
@@ -284,7 +284,7 @@ html{
     #typewriter .Typewriter__cursor{
         font-size: 1.5rem;
     }   
-    #aboutList, #aboutList2, #aboutList3{
+    #aboutList, #aboutList2, #aboutList3,.featuresAboutList{
         font-size: 1rem;
         margin: 1rem;
         margin-bottom: 0;
