@@ -4,16 +4,21 @@ import PropTypes from 'prop-types'
 Navigation.propTypes = {
   setIsSidePanelOpen: PropTypes.func
 }
+function navigateInstantly(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const target = e.target.getAttribute('href'); // Get the href attribute of the clicked link
+  window.location.hash = target; // Change the hash directly, causing an instant jump to the target
+}
 function Navigation({setIsSidePanelOpen}) {
   
   return (
     <div className=" w-full py-4 bg-transparent flex justify-between lg:justify-end items-center px-4 fixed top-0 z-[1000] gap-8">
       {/* <div className="flex gap-4"> */}
             <ul className="gap-10 text-lg hidden lg:flex ">
-            <li className="headingUnderline"><a href="#introChefCharm" className="">Home</a></li>
-            <li className="headingUnderline"><a href="#aboutChefCharm" className="">About</a></li>
-            <li className="headingUnderline"><a href="#featuresPart1" className="">Features</a></li>
-            <li className="headingUnderline"><a href="#" className="">Tech</a></li>
+            <li className="headingUnderline"><a href="#introChefCharm" onClick={(e)=>navigateInstantly(e)}>Home</a></li>
+            <li className="headingUnderline"><a href="#aboutChefCharm" onClick={(e)=>navigateInstantly(e)}>About</a></li>
+            <li className="headingUnderline"><a href="#featuresPart1" onClick={(e)=>navigateInstantly(e)}>Features</a></li>
+            <li className="headingUnderline"><a href="#techStacks" onClick={(e)=>navigateInstantly(e)}>Tech</a></li>
             </ul>
             <button className="lg:hidden" onClick={()=>setIsSidePanelOpen(true)}>
               <GiHamburgerMenu style={{
