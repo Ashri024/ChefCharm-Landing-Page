@@ -1,5 +1,6 @@
 import EllipseSvg from '../assets/EllipseSvg.svg'
 import PropTypes from 'prop-types';
+import trees from '../assets/trees.png'
 
 Ellipse.propTypes = {
   height: PropTypes.string,
@@ -13,8 +14,9 @@ function Ellipse({height}) {
       height: height,
       minHeight: '100vh',
     }}>
-      <div className={`bgGradientEllipse rounded-full overflow-hidden`}>
-        <img src={EllipseSvg} alt="Ellipse" className='absolute top-0 left-0 w-full h-full object-cover object-center ellipseSvg'/>
+      <div className={`bgGradientEllipse rounded-full `}>
+        <img src={trees} alt="trees" className='absolute -top-[110px] scale-[0.9] left-0 w-full object-center trees z-10 opacity-0'/>
+        <img src={EllipseSvg} alt="Ellipse" className='absolute top-0 left-0 w-full h-full object-cover object-center ellipseSvg z-0'/>
       </div>
     </div>
   )

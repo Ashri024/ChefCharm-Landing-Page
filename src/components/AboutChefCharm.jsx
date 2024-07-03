@@ -268,6 +268,8 @@ function AboutChefCharm2() {
 
        let timeline1= gsap.timeline()
        timeline1
+       .to(typeRef.current, { duration: 1, opacity: 1, translateX: "0%" },"<" )
+       .to("#bgGif", { duration: 1, rotate: 270, ease: "power4.inOut", translateY: "20%" }, "<")
        .to(".bgGradientEllipse", { duration: 1, rotate: 450, ease: "power4.inOut",
         background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)"}, "<")
        .to((`#aboutList7 li`), { duration: 1, opacity: 0, translateX: "-100%", stagger:0.5 }, "<")
@@ -295,8 +297,10 @@ function AboutChefCharm2() {
 
         let timeline2 = gsap.timeline()
         timeline2
+        .to(typeRef.current, { duration: 1, opacity: 1, translateX: "100%" },"<" )
         .to(".bgGradientEllipse", { duration: 1, rotate: 270, ease: "power4.inOut",
           background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)"}, "<")
+
         .to((`#aboutList8 li`), { duration: 1, opacity: 0, translateX: "100%", stagger:0.5 }, "<")
         .to((`#aboutList7 li`), { duration: 1, opacity: 1, translateX: 0, stagger:0.5 }, "<")
         let timeline4 = gsap.timeline()
@@ -333,11 +337,19 @@ function AboutChefCharm2() {
 
        let timeline1= gsap.timeline()
        timeline1
-       .to(".bgGradientEllipse", { duration: 1, rotate: 450, ease: "power4.inOut",
-        background:"linear-gradient(18deg,#70FF00 0%, #151515 64%, #000000 100%)",
-        translate: "0 20%"
+       .to(typeRef.current, { duration: 1, opacity: 0, translateX: "100%" },"<")
+       .to(".bgGradientEllipse", { duration: 1, rotate: 360, ease: "power4.inOut",
+        background:"linear-gradient(187deg, rgb(112, 255, 0) 0%, rgb(21, 21, 21) 64%, rgb(0, 0, 0) 100%)",
+        translateX: 0,
+        translateY:"20%"
       }, "<")
-       .to((`#aboutList8 li`), { duration: 1, opacity: 0, translateX: "-100%", stagger:0.5 }, "<")
+      .to(".trees", { duration: 1, opacity: 1},"<" )
+      .to("#bgGif",{
+        duration: 1,
+        scale:1
+      })
+      .to("#bgGifLottie", { duration: 1, rotate:180,top:"60vh",translateX:0,translateY: 0 },"<")
+       .to((`#aboutList8 li`), { duration: 1, opacity: 0, translateX: "-100%", stagger:0.2 }, "<")
        .to(("#mockup7"), { duration: 1, opacity: 0, translateY: "-100%", scale:0.2 }, "<")
        
       },
@@ -360,7 +372,11 @@ function AboutChefCharm2() {
         let timeline2 = gsap.timeline()
         timeline2
         .to(".bgGradientEllipse", { duration: 1, rotate: 270, ease: "power4.inOut",
-          background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)"}, "<")
+          background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)",
+          translateX: "40%",
+          translateY: "-20%"
+        }, "<")
+      .to(".trees", { duration: 1, opacity: 0},"<" )
         .to((`#aboutList8 li`), { duration: 1, opacity: 1, translateX: 0, stagger:0.5 }, "<")
         .to(("#mockup7"), { duration: 1, opacity: 1,translateY:"0%" ,scale:0.9 }, "<")
        },

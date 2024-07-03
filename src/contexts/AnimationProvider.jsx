@@ -103,7 +103,7 @@ function AnimationProvider({children}) {
             .to("#bgGifLottie", { duration: 2, rotate:90,top:bgGifY(screenCategory).bgGifTopIntro,translateX:"-37%",translateY: 0 },"<")
             .to("#bgGif",{
               duration: 2,
-              top:"-6rem",
+              top:"-16rem",
               opacity:1,
               ease: "power1.in"
             }, "<")
