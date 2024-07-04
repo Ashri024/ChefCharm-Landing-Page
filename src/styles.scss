@@ -11,7 +11,9 @@ html{
 .bgGradient {
     background: linear-gradient(90deg, $tertiaryColor 0%, $secondaryColor 100%);
 }
-
+.bgGradientColorEllipse{
+    background: linear-gradient(270deg, #000000 0%, $primaryColor 40%, $primaryColor 100%);
+}
 .bgGradientEllipse{
     background: linear-gradient(270deg, #000000 0%, $primaryColor 40%, $primaryColor 100%);
     position: absolute;
@@ -70,6 +72,12 @@ html{
     background: $headingColor;
     transition: $primaryTransition;
     z-index: -1;
+}
+.visit .headingUnderline {
+    color: white!important;
+}
+.visit .headingUnderline::after{
+    width: 110%;
 }
 .primaryBtn{
     background: $secondaryColor;
@@ -170,7 +178,7 @@ html{
     .headingUnderline{
         &:hover{
                cursor: pointer;
-               color: $primaryColor;
+               color: #000!important;
            }
         &:hover::after{
                bottom: 30px;
