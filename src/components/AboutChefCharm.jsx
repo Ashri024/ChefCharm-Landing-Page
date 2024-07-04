@@ -27,7 +27,7 @@ function AboutChefCharm2() {
     });
     let tl3 ="";
     let tl4="";
-    let tl5=""
+    // let tl5=""
     let tl6=""
 
      gsap.to('.bgGradientEllipse', { duration: 2, rotate: 90, ease: "power4.inOut", translateY: translateYValues[screenCategory] })
