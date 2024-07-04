@@ -40,7 +40,9 @@ function ChefCharmIntro2() {
         gsap.killTweensOf('#getStarted')
         gsap.to('#getStarted', { duration: 1, opacity: 0, translateY: '-100%', ease: "power4.inOut",})
       }
-      
+      // gsap.killTweensOf('.bg')
+      gsap.to(".ellipse1", { duration: 2, rotate: 90, ease: "power4.inOut",})
+
       tl2Global.to('#welcome', {duration: 1, opacity: 1, translateY: 0},"-=0.2")
       .to('#chefSvg', {duration: 1, opacity: 1, left: 0}, "<")
       .addLabel('welcome')
@@ -58,22 +60,23 @@ function ChefCharmIntro2() {
         start: "top 90%",
         id: "introChefCharm",
         end: "bottom bottom",
+        markers: true,
         scrub: 1,
         
         onEnter: () => {
-          console.log('onEnter')
+          console.log('onEnter intro')
             removeGetStarted()
         },
         onLeaveBack: () => {
-          console.log('onLeaveBack')
+          console.log('onLeaveBack intro')
           getStartedAnimation();
         },
        onLeave: () => {
-          console.log('onLeave')
-          tl2Global.pause()
+          console.log('onLeave intro')
+          // tl2Global.pause()
         },
         onEnterBack: () => {
-          console.log('onEnterBack')
+          console.log('onEnterBack intro')
           tl2Global.pause()
         },
       });

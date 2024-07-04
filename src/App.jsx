@@ -23,17 +23,18 @@ function App() {
     { isSidePanelOpen &&
       <NavigationOptions setIsSidePanelOpen={setIsSidePanelOpen} />
     }
-     <Ellipse height={height}/>
+    {/* <Experiment/> */}
+     <Ellipse height={height} idName={"ellipse1"} />
     <BackgroundGif height={height}/>
      <ContentBox/>
      <ChefCharmIntro2/>
-     <div className="h-screen  opacity-50 transparent w-full relative z-50" id="introChefCharm">
+     <div className="h-[300vh] bg-red-200 opacity-50 transparent w-full relative z-50" id="introChefCharm">
     </div>
-     <div className=" h-[50vh] opacity-50 transparent w-full relative z-50 emptySpace">
+     <div className=" h-[100vh] opacity-50 transparent w-full relative z-50 emptySpace bg-orange-300">
     </div>
-    <AboutChefCharm/> 
-     <div className=" h-[50vh] opacity-50 transparent w-full relative z-50 emptySpace"></div>
-     <div className="h-screen  opacity-50 transparent w-full relative z-50" id="aboutChefCharm2">
+    <AboutChefCharm height={height} />
+     <div className=" h-[50vh] bg-orange-300 opacity-50 transparent w-full relative z-50 emptySpace"></div>
+     <div className="h-screen bg-red-200 opacity-50 transparent w-full relative z-50" id="aboutChefCharm2">
     </div>
     <div className=" h-[50vh] opacity-50 transparent w-full relative z-50 emptySpace"></div>
     <div className="h-screen  opacity-50 transparent w-full relative z-50" id="featuresPart1">

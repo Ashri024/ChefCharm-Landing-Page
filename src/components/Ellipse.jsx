@@ -6,18 +6,19 @@ import ChefCharmTitle from '../assets/ChefcharmTItle.png'
 
 Ellipse.propTypes = {
   height: PropTypes.string,
+  idName: PropTypes.string,
 }
 
-function Ellipse({height}) {
+function Ellipse({height,idName}) {
     // Initialize mq state with the current matchMedia result
     
   return (
-    <div className="z-10 fixed top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden max-[700px]:hidden" id="ellipseParent" style={{
+    <div className={`z-10 fixed top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden max-[700px]:hidden ellipseParent`}  style={{
       height: height,
       minHeight: '100vh',
     }}>
       
-      <div className={`bgGradientEllipse relative rounded-full z-0`}>
+      <div className={`bgGradientEllipse ${idName} relative rounded-full z-0`}>
         <img src={ChefCharmTitle} alt="ChefCharmTitle" className='absolute -top-[150px] left-1/2 -translate-x-1/2 w-[250px] object-center trees z-[50] opacity-0'/>
         <img src={billboard} alt="billboard" className='absolute trees -top-[220px] left-1/2 -translate-x-1/2 w-[350px] object-center trees z-10 opacity-0'/>
         <img src={trees} alt="trees" className='absolute -top-[110px] scale-[0.9] left-0 w-full object-center trees z-10 opacity-0'/>

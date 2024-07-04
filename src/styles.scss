@@ -124,13 +124,13 @@ html{
     }
 }
 
-#whatIs{
+.whatIs{
     font-size: 2.5rem;
     color: #fff;
     font-weight: 500;
     transition: $primaryTransition;
 }
-#whatIs{
+.whatIs{
     & span{
         text-decoration: underline $secondaryColor;
         margin-left: 14rem;
@@ -153,7 +153,7 @@ html{
         margin-bottom: 0.6rem;
     }
 }
-#laptopMockup{
+.laptopMockup{
     width:640px
 }
 #typewriter .Typewriter__cursor{
@@ -196,7 +196,7 @@ html{
     }
 }
 @media screen and (max-width: 1280px) {
-    #whatIs{
+    .whatIs{
         font-size: 2rem;
         & span{
             font-size: 2.5rem;
@@ -211,7 +211,7 @@ html{
     #aboutList, #aboutList2, #aboutList3, .featuresAboutList{
         font-size: 1.1rem;
     }
-    #laptopMockup{
+    .laptopMockup{
         min-width:500px
     }
     .bgGradientEllipse{
@@ -222,7 +222,7 @@ html{
     }
 }
 @media screen and (max-width: 1024px) {
-    #whatIs{
+    .whatIs{
         font-size: 1.8rem;
         & span{
             font-size: 2rem;
@@ -242,7 +242,7 @@ html{
         font-size: 1.1rem;
         margin-top: 2rem;
     }
-    #laptopMockup{
+    .laptopMockup{
         min-width:340px
     }
     .bgGradientEllipse{
@@ -269,7 +269,7 @@ html{
         min-width: 25rem;
         width: 25rem;
     }
-    #laptopMockup{
+    .laptopMockup{
         min-width: 300px;
         max-width: 300px;
     }
@@ -279,7 +279,7 @@ html{
         min-width: 300px;
         width: 100%;
     }
-    #whatIs{
+    .whatIs{
         font-size: 1.5rem;
         & span{
             font-size: 1.5rem;
