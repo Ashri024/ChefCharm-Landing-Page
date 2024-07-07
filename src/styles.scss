@@ -138,20 +138,24 @@ html{
         color: $secondaryColor;
     }
 }
-#featureHeading{
+.featureHeading{
     text-decoration: underline $secondaryColor;
     font-size: 2.3rem;
     color: $secondaryColor;
 }
-#aboutList, #aboutList2, #aboutList3, .featuresAboutList{
+
+#aboutList,.featuresAboutList{
     color: white;
-    margin-top: 3rem;
+    margin-top: 1rem;
     font-size: 1.3rem;
     list-style: disc;
-
+    margin-left: 1rem;
     & li{
         margin-bottom: 0.6rem;
     }
+}
+#aboutList{
+    margin-top: 3rem;
 }
 .laptopMockup{
     width:640px
@@ -202,7 +206,7 @@ html{
             font-size: 2.5rem;
         }
     }
-    #featureHeading{
+    .featureHeading{
         font-size: 2rem;
     }
     #typewriter .Typewriter__cursor{
@@ -229,7 +233,7 @@ html{
             margin-left: 10rem;
         }
     }
-    #featureHeading{
+    .featureHeading{
         font-size: 2rem;
     }
     #getStarted{
@@ -286,7 +290,7 @@ html{
             margin-left: 7rem;
         }
     }
-    #featureHeading{
+    .featureHeading{
         font-size: 1.5rem;
     }
     #typewriter .Typewriter__cursor{

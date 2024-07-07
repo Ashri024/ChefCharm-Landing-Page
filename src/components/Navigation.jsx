@@ -17,7 +17,7 @@ function Navigation({setIsSidePanelOpen}) {
             <ul className="gap-10 text-lg hidden lg:flex ">
             <li className="headingUnderline"><a href="#introChefCharm" onClick={(e)=>navigateInstantly(e)}>Home</a></li>
             <li className="headingUnderline"><a href="#aboutChefCharm" onClick={(e)=>navigateInstantly(e)}>About</a></li>
-            <li className="headingUnderline"><a href="#featuresPart1" onClick={(e)=>navigateInstantly(e)}>Features</a></li>
+            <li className="headingUnderline"><a href="#feature1" onClick={(e)=>navigateInstantly(e)}>Features</a></li>
             <li className="headingUnderline"><a href="#techStacks" onClick={(e)=>navigateInstantly(e)}>Tech</a></li>
             </ul>
             <button className="lg:hidden" onClick={()=>setIsSidePanelOpen(true)}>

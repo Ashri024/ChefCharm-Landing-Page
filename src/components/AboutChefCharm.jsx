@@ -3,14 +3,16 @@ import {  useEffect, useContext, } from 'react';
 import { AnimationContext } from '../contexts';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import LaptopMockup from "../assets/Laptop.png";
+import Ellipse from './Ellipse';
+import PropTypes from 'prop-types';
+import ListSet from './ListSet';
+import ListSetFeatures from './ListSetFeatures';
 import HomePage from '../assets/HomePageChefCharm.png';
 import RecipeMethod from '../assets/MultiMode.png';
 import RecipeManage from '../assets/RecipeManage.png';
-import listAndMealPlanner from '../assets/listAndMealPlanner.png';
 import colotThemes from '../assets/ColorThemes.png';
+import listAndMealPlanner from '../assets/listAndMealPlanner.png';
 import teckStack2 from '../assets/techStackFinal.png';
-import Ellipse from './Ellipse';
-import PropTypes from 'prop-types';
 
 AboutChefCharm2.propTypes = {
   height: PropTypes.string,
@@ -20,25 +22,26 @@ gsap.registerPlugin(ScrollTrigger);
 
 function AboutChefCharm2({height}) {
   const {screenCategory,translateYValues,tl2Global,onPageEnterAnimation,onChangeEnterAnimation,bgGifY} = useContext(AnimationContext);
+  let featureList1= ["ChefCharm leverages the power of the Edamam API to offer a vast collection of recipes from various cuisines.","Users can easily search for recipes using keywords, and the app provides auto-suggestions after typing three or more characters.","Additionally, users can refine their searches by applying filters based on meal types, cuisine types and dish types."]
+  let featureList2= ["ChefCharm offers multiple ways to create and add recipes to your collection.","Users can import recipes from websites, PDFs, and images, making it easy to digitize favourite recipes. ","Manual recipe creation is also provided. Additionally, Chef Gemini, also helps craft new recipes with suggestions, making it easy for everyone to cook delicious meals."]
+  let featureList3= ["Managing your recipe collection is a breeze with ChefCharm.","Users can save their rehcipes, add them to their saved and favourite lists separately, edit them to suit personal preferences, and add notes for future reference. ","The app also tracks your recipe history, allowing you to revisit previously explored recipes. For added convenience, ChefCharm also offers random recipe suggestions."]
+  let featureList4=["Users can add ingredients from any recipe directly to their shopping list, ensuring they never miss an item while at the store. ","The app also allows for meal planning on specific dates, helping users organize their cooking schedule efficiently.","Additionally, inbuilt timers are provided to manage cooking times, ensuring that every dish is cooked to perfection."]
+  let featureList5=["ChefCharm is designed with the user in mind, offering a seamless and personalized experience. ","Users can log in using their Google, Facebook, or email/password credentials, providing flexible and secure access options.","The app also features three distinct themes, allowing users to customize the interface according to their aesthetic preferences."]
+  let techStackArr=[{title:"Frontend",text:"React, MUI, Tailwind CSS."},{title:"Backend",text:"Node.js, Express, MongoDB Atlas, Mongoose"},
+    {title:"Authentication",text:"Passport.js, JWT, Bcrypt, OAuth2.0"},
+    {title:"Caching & State Management", text:"Redis, React-Query, useContext"},
+    {title:"APIs",text:"Edamam, Google OAuth, Gemini API"},{title:"Deployment",text:"Heroku, Netlify."},{title:"Version Control",text:"Git, GitHub."},{title:"Tools",text:"Figma, Thunder Client, VS Code."},
+    {title: "GraphQL", text: "Apollo Client, Apollo Server, GraphQL Yoga."}
+  ]
   useEffect(() => {
     if(!tl2Global) return;
-    ScrollTrigger.create({
-      trigger: "#aboutChefCharm",
-      start: "top 90%",
-      end: "bottom bottom",
-      id: "aboutChefCharm",
-      onEnter: () => {
-        // gsap.set("#mockup1", {
-        //   position:"fixed",
-        //   top:"4rem",
-        //   left:"0",
-        // })
-      }
-    })
-    gsap.set(".ellipse2", { translateX:"100%" })
+   let topOffset="";
+    gsap.set(".ellipse2", { translateX:"100%", immediateRender:true })
 
     let tl= gsap.timeline({defaults: { ease: "power4.inOut" }});
-        tl.to("#mockup1", {
+    tl
+    .to(".ellipse2", { duration: 1, translateX: "40%",translateY: "-20%",rotate: 180, ease: "power4.inOut",  })
+    .to("#mockup1", {
           duration: 1,
           position:"fixed",
           top:"3rem",
@@ -46,11 +49,32 @@ function AboutChefCharm2({height}) {
           translateX:0,
           opacity:1
         })
-        .set(".ellipse2", { translateX:"100%" },"<")
-        .to('.ellipse2', { duration: 1, rotate: 180, ease: "power4.inOut", translateX: "40%",translateY: "-20%" },"<")
         .to("#heading1", { duration: 1, opacity: 1, translateX: 0 },"<")
         .to("#aboutList li", { duration: 1, opacity: 1, translateX: 0, stagger: 0.2 })
-        
+        .to(".bgGradient",{
+          duration: 2,
+          ease: "power4.out",
+          background: "linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)"})
+
+    ScrollTrigger.create({
+      trigger:"#feature1",
+      start: "top top",
+      end: "bottom bottom",
+      id: "feature1 opacity",
+      toggleActions: "restart none none reverse",
+      markers: true,
+      onEnter:()=>{
+        gsap.set("#mockup1", {
+          top: `${topOffset}px`, // Apply the calculated offset
+          position: "absolute",
+          left:"-15px",
+          duration: 1,
+          // opacity: 0,
+          ease: "power4.inOut",
+          immediateRender: true,
+        });
+      }
+    })
     ScrollTrigger.create({
       animation: tl,
       trigger: "#aboutChefCharm",
@@ -60,15 +84,11 @@ function AboutChefCharm2({height}) {
       toggleActions: "restart none none reverse",
       markers: true,
       onEnter: () => {
+      
+        console.log("AboutChefCharm2 entered")
       },
       onLeaveBack: () => {  
-        // gsap.to("#mockup1", {
-        //   duration: 1,
-        //   position:"relative",
-        //   top:"0",
-        //   left:"0",
-        //   ease: "power1.inOut",
-        // })
+        tl.timeScale(2).reverse()
       },
       onLeave: () => {
         // Select the parent container and the mockup element
@@ -76,31 +96,50 @@ function AboutChefCharm2({height}) {
         const mockupElement = document.querySelector('#mockup1');
         const parentRect = parentContainer.getBoundingClientRect();
         const mockupRect = mockupElement.getBoundingClientRect();
-        // Calculate the offset of mockup1 from the top of its parent (laptopMockup)
         const offsetTop = mockupRect.top - parentRect.top;
+        topOffset=offsetTop;
+        tl.pause()
+          gsap.set("#mockup1", {
+            position: "absolute",
+            left:"-15px",
+            duration: 1,
+            ease: "power4.inOut",
+            immediateRender: true,
+          });
         
-        // Use GSAP to animate #mockup1 to the calculated offset position
-        // and change its position to absolute
-        console.log(`parentContainer.offsetTop: ${parentRect.top}`)
-        console.log(`mockupElement.offsetTop: ${mockupRect.top}`)
-        console.log(`offsetTop: ${offsetTop}`)
-
-        gsap.set("#mockup1", {
-          top: `${offsetTop}px`, // Apply the calculated offset
-          position: "absolute",
-        });
         
+        console.log("AboutChefCharm2 left")
       },
       onEnterBack: () => {
+        tl= gsap.timeline({defaults: { ease: "power4.inOut" }});
+        tl
+        .to(".ellipse2", { duration: 1, translateX: "40%",translateY: "-20%",rotate: 180, ease: "power4.inOut",  })
+        .to("#mockup1", {
+              duration: 1,
+              position:"fixed",
+              top:"3rem",
+              left:"0",
+              translateX:0,
+              opacity:1
+            })
+            .to("#heading1", { duration: 1, opacity: 1, translateX: 0 },"<")
+            .to("#aboutList li", { duration: 1, opacity: 1, translateX: 0, stagger: 0.2 })
+            .to(".bgGradient",{
+              duration: 2,
+              ease: "power4.out",
+              background: "linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)"})
         gsap.set("#mockup1", {
           position:"fixed",
           top:"3rem",
+          left:"0",
+          immediateRender: true,
         });
       }
     })
 
     let tl2 = gsap.timeline({defaults: { ease: "power4.inOut" }});
-        tl2.to("#heading2", { duration: 1, opacity: 1, translateX: 0 },"<")
+        tl2
+        .to("#heading2", { duration: 1, opacity: 1, translateX: 0 },"<")
         .to("#aboutList2 li", { duration: 1, opacity: 1, translateX: 0, stagger: 0.2 })
     ScrollTrigger.create({
       trigger: "#list2",
@@ -110,57 +149,107 @@ function AboutChefCharm2({height}) {
       toggleActions: "restart none none reverse",
       markers: true,
       animation: tl2,
-      onEnter: () => {
+    })
+
+    let tl4 = gsap.timeline({defaults: { ease: "power4.inOut" }});
+
+    ScrollTrigger.create({
+      trigger: "#feature1",
+      start: "top 90%",
+      end: "bottom bottom",
+      id: "feature1",
+      toggleActions: "restart none none reverse",
+      markers: true,
+      animation: tl4,
+      onEnter:()=>{
+        gsap.to(".ellipse2", { duration: 1, translateX: "40%",translateY: "-20%",rotate: 270, ease: "power4.inOut", background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)" })
+        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+          gsap.to(".bgGradient",{
+            duration: 2,
+            ease: "power4.out",
+            background: "linear-gradient(266deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)"
+          }).restart()
+         }else{
+         gsap.to(".bgGradient",{
+            duration: 2,
+            ease: "power4.out",
+            background: "linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)"
+          }).restart()
+        }
+      },
+      onLeaveBack:()=>{
+        gsap.to(".ellipse2", { duration: 1, translateX: "40%",translateY: "-20%",rotate: 180, ease: "power4.inOut", background:"linear-gradient(270deg, #000000 0%, #4F1D07 40%, #4F1D07 100%)" })
+
+        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+          gsap.to(".bgGradient",{
+            duration: 2,
+            ease: "power4.out",
+            background: "linear-gradient(263deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)"
+          }).restart()
+        }else{
+        gsap.to(".bgGradient",{
+          duration: 2,
+          ease: "power4.out",
+          background: "linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)"
+        }).restart()}
       }
     })
+    let tl5 = gsap.timeline({defaults: { ease: "power4.inOut" }});
+    ScrollTrigger.create({
+      trigger: "#techStacks",
+      start: "top 90%",
+      end: "bottom bottom",
+      id: "techStacks",
+      toggleActions: "restart none none reverse",
+      markers: true,
+      animation: tl5,
+      onEnter:()=>{
+        gsap.to(".ellipse2", { duration: 1, translateX: "40%",translateY: "-20%",rotate: 450, ease: "power4.inOut", background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)" })
+        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+          gsap.to(".bgGradient",{
+            duration: 2,
+            ease: "power4.out",
+            background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)"
+          }).restart()
+        }else{
+        gsap.to(".bgGradient",{
+          duration: 2,
+          ease: "power4.out",
+          background: "linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)"
+        }).restart()}
+      },
+      onLeaveBack:()=>{
+        gsap.to(".ellipse2", { duration: 1, translateX: "40%",translateY: "-20%",rotate: 270, ease: "power4.inOut", background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)" })
+        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+          gsap.to(".bgGradient",{
+            duration: 2,
+            ease: "power4.out",
+            background: "linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)"
+          }).restart()
+        }else{
+        gsap.to(".bgGradient",{
+          duration: 2,
+          ease: "power4.out",
+          background: "linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)"
+        }).restart()}
+      }
+    })
+    
+
   },[bgGifY, onChangeEnterAnimation, onPageEnterAnimation, screenCategory, tl2Global, translateYValues])
 
   return (
-    <div className=" opacity-100 transparent w-full relative z-[70]" id="aboutChefCharm" >
+    <div className=" opacity-100 transparent w-full relative z-[70]" >
       <div className='absolute top-0 left-0 w-full h-full opacity-100 bgGradient'></div>
       <Ellipse height={height} idName={"ellipse2"} />
-      <div className="h-[300vh] transparent w-full relative z-50 overflow-hidden flex items-center justify-around max-[700px]:flex-col pt-12" >
-      <div id="mockupParent1" className="laptopMockup relative h-full">
-        <div id="mockup1" className='laptopMockup h-[550px] max-[1024px]:h-[450px] opacity-0 -translate-x-full'>
-          <img src={LaptopMockup} alt="Chef Charm" className="w-full z-20 object-center relative" />
-        </div>
-       
-      </div>
+      <ListSet LaptopMockup={LaptopMockup} />
+      <ListSetFeatures featureId={"feature1"} LaptopMockup={HomePage} heading={"Comprehensive Recipe Search"} listArray={featureList1} mockupParentId={"mockupParent3"} mockupId={"mockup3"} headingId={"heading3"} listId={"aboutList3"}/>
 
-    <div className='w-full min-[700px]:w-2/3 max-w-[540px] flex flex-col justify-around items-center h-full'>
-      <div style={{ padding:"1rem", position:"relative",height:"50%"}} className=' flex flex-col items-center justify-center'>
-        <div className='h-[110px] relative min-w-[450px] max-[1024px]:min-w-[350px] max-[700px]:top-0'>
-
-          <div className="relative whatIs translate-x-1/2 opacity-0" id="heading1">
-            What Actually is <br/><span>ChefCharm</span> ?
-          </div>
-        </div>
-        <div className='relative mt-2 min-[700px]:mt-4'>
-          <ul id="aboutList" className="relative max-w-[90%] featuresAboutList max-[700px]:max-w-full">
-            <li className='mb-4 translate-x-1/2 opacity-0'>It is an innovative recipe web application designed to elevate your cooking experience. </li>
-            <li className='mb-4 translate-x-1/2 opacity-0'>It offers a seamless and interactive way to discover, create, and manage recipes, leveraging advanced technologies.</li>
-            <li className='mb-4 translate-x-1/2 opacity-0'>It uses AI to bring culinary inspiration to your fingertips.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div style={{ padding:"1rem", position:"relative",height:"50%"}} className='flex flex-col items-center justify-center' id="list2">
-        <div className='h-[110px] relative min-w-[450px] max-[1024px]:min-w-[350px] max-[700px]:top-0 '>
-
-          <div className="relative whatIs translate-x-1/2 opacity-0" id="heading2">
-            What Actually are its <br/><span>Features</span> ?
-          </div>
-        </div>
-        <div className='relative mt-2 min-[700px]:mt-4'>
-          <ul id="aboutList2" className="relative max-w-[90%] featuresAboutList max-[700px]:max-w-full">
-            <li className='mb-4 translate-x-1/2 opacity-0'>It is an innovative recipe web application designed to elevate your cooking experience. </li>
-            <li className='mb-4 translate-x-1/2 opacity-0'>It offers a seamless and interactive way to discover, create, and manage recipes, leveraging advanced technologies.</li>
-            <li className='mb-4 translate-x-1/2 opacity-0'>It uses AI to bring culinary inspiration to your fingertips.</li>
-          </ul>
-        </div>
-      </div>
-      </div>
-    </div>
+      <ListSetFeatures featureId={"feature2"} LaptopMockup={RecipeMethod} heading={"Multi-Method Recipe Creation:"} listArray={featureList2} mockupParentId={"mockupParent4"} mockupId={"mockup4"} headingId={"heading4"} listId={"aboutList4"}/>
+      <ListSetFeatures featureId={"feature3"} LaptopMockup={RecipeManage} heading={"Recipe Management:"} listArray={featureList3} mockupParentId={"mockupParent5"} mockupId={"mockup5"} headingId={"heading5"} listId={"aboutList5"}/>
+      <ListSetFeatures featureId={"feature4"} LaptopMockup={listAndMealPlanner} heading={"Shopping and Meal Planning:"} listArray={featureList4} mockupParentId={"mockupParent6"} mockupId={"mockup6"} headingId={"heading6"} listId={"aboutList6"}/>
+      <ListSetFeatures featureId={"feature5"} LaptopMockup={colotThemes} heading={"User-Friendly Experience:"} listArray={featureList5} mockupParentId={"mockupParent7"} mockupId={"mockup7"} headingId={"heading7"} listId={"aboutList7"}/>
+      <ListSetFeatures featureId={"techStacks"} LaptopMockup={teckStack2} heading={"What Tech Stack Has Been Used?"} listArray={techStackArr} mockupParentId={"mockupParent8"} mockupId={"mockup8"} headingId={"heading8"} listId={"aboutList8"} isTech/>
     </div>
   )
 }
