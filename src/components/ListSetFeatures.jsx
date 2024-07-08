@@ -21,25 +21,25 @@ function ListSetFeatures({LaptopMockup,mockupParentId,mockupId,headingId,listId,
     let tlTemp = gsap.timeline({defaults: { ease: "power4.inOut" }});
     tlTemp
         .to(`#${mockupId}`, {
-          duration: 1,
+          duration: 0.5,
           opacity: 1,
           translateX: 0,
         })
-        .to(`#${headingId}`, { duration: 1, opacity: 1, translateX: 0 },"<")
-        .to(`#${listId} li`, { duration: 1, opacity: 1, translateX: 0, stagger: 0.2 })
+        .to(`#${headingId}`, { duration: 0.5, opacity: 1, translateX: 0 })
+        .to(`#${listId} li`, { duration: 0.5, opacity: 1, translateX: 0, stagger: 0.1 })
     ScrollTrigger.create({
       trigger: `#${mockupParentId}`,
       start: "top 90%",
       end: "bottom bottom",
       id: mockupParentId,
       toggleActions: "restart none none reverse",
-      markers: true,
+      // markers: true,
       animation: tlTemp,
     })
   },[headingId, listId, mockupId, mockupParentId])
     
   return (
-    <div className="h-[250vh] transparent w-full relative z-50 overflow-hidden flex items-end justify-around max-[700px]:flex-col pt-12" id={featureId}>
+    <div className="h-[200vh] transparent w-full relative z-50 overflow-hidden flex items-center justify-around max-[700px]:flex-col pt-12" id={featureId}>
     <div className=' absolute opacity-20 top-0 left-0 w-full h-full'></div>
       <div id={mockupParentId} className="laptopMockup relative h-[60%] flex items-center justify-center">
         <div id={mockupId} className='laptopMockup h-[550px] max-[1024px]:h-[450px] opacity-0 -translate-x-full'>
