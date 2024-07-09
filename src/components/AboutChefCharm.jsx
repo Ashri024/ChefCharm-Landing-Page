@@ -20,6 +20,30 @@ AboutChefCharm2.propTypes = {
 }
 
 gsap.registerPlugin(ScrollTrigger);
+function ellipse2Translate(screenCategory){
+  if(screenCategory === 'mq1024') {
+    let translateX = "30%";
+    let translateY = "-17%";
+    return {translateX, translateY}
+  }
+  else {
+    let translateX = "40%";
+    let translateY = "-20%";
+    return {translateX, translateY}
+  }
+}
+function bgGradient(gradient1, gradient2,screen){
+  if(screen === 'mq700' || screen === 'mq500'){
+    return gradient1
+  }
+    return gradient2
+}
+function position(screen){
+  if(screen === 'mq700' || screen === 'mq500'){
+    return "absolute"
+  }
+    return "fixed"
+}
 
 function AboutChefCharm2({height}) {
   const {screenCategory,translateYValues,tl2Global,onPageEnterAnimation,onChangeEnterAnimation,bgGifY} = useContext(AnimationContext);
@@ -34,17 +58,19 @@ function AboutChefCharm2({height}) {
     {title:"APIs",text:"Edamam, Google OAuth, Gemini API"},{title:"Deployment",text:"Heroku, Netlify."},{title:"Version Control",text:"Git, GitHub."},{title:"Tools",text:"Figma, Thunder Client, VS Code."},
     {title: "GraphQL", text: "Apollo Client, Apollo Server, GraphQL Yoga."}
   ]
+
   useEffect(() => {
+  
     if(!tl2Global) return;
    let topOffset="";
     gsap.set(".ellipse2", { translateX:"100%", immediateRender:true })
 
-    let tl= gsap.timeline({defaults: { ease: "power4.inOut" }});
+    let tl= gsap.timeline({defaults: { ease: "power4.out" }});
     tl
-    .to(".ellipse2", { duration: 0.5, translateX: "40%",translateY: "-20%",rotate: 180, ease: "power4.inOut",  })
+    .to(".ellipse2", { duration: 0.5, translateX: ellipse2Translate(screenCategory).translateX,translateY: ellipse2Translate(screenCategory).translateY,rotate: 180, ease: "power4.inOut",  })
     .to("#mockup1", {
           duration: 0.5,
-          position:"fixed",
+          position: position(screenCategory),
           top:"3rem",
           left:"0",
           translateX:0,
@@ -53,9 +79,11 @@ function AboutChefCharm2({height}) {
         .to("#heading1", { duration: 0.5, opacity: 1, translateX: 0 },"<")
         .to("#aboutList li", { duration: 0.5, opacity: 1, translateX: 0, stagger: 0.1 })
         .to(".bgGradient",{
+
           duration: 3,
           ease: "power4.out",
-          background: "linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)"})
+          background: bgGradient("linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)","linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 100%)",screenCategory)
+        })
 
     ScrollTrigger.create({
       animation: tl,
@@ -68,8 +96,13 @@ function AboutChefCharm2({height}) {
         
         console.log("AboutChefCharm2 entered")
       },
-      onLeaveBack: () => {  
-        tl.timeScale(2).reverse()
+      onLeaveBack: async() => {  
+        await tl.timeScale(2).reverse()
+        console.log(document.querySelector(".ellipse2").style.transform)
+        if(document.querySelector(".ellipse2").style.transform !== "translate(100%, -55%)"){
+          console.log("executed")
+        gsap.to(".ellipse2", { duration: 1, rotate: 90, translateX:"100%", ease: "power4.inOut",})
+        }
       },
       onLeave: () => {
         // Select the parent container and the mockup element
@@ -80,31 +113,34 @@ function AboutChefCharm2({height}) {
         const offsetTop = mockupRect.top - parentRect.top;
         topOffset=offsetTop;
         tl.pause()
+        if(screenCategory !== 'mq700' && screenCategory !== 'mq500'){
           gsap.set("#mockup1", {
             position: "absolute",
-            left:"-15px",
             duration: 1,
             top: topOffset,
             ease: "power4.inOut",
             immediateRender: true,
           });
+        }
         console.log("AboutChefCharm2 left")
       },
       onEnterBack: () => {
+        if(screenCategory !== 'mq700' && screenCategory !== 'mq500'){
         gsap.set("#mockup1", {
           position:"fixed",
           top:"3rem",
           left:"0",
           immediateRender: true,
         });
+      }
         tl.resume()
       }
     })
 
-    let tl2 = gsap.timeline({defaults: { ease: "power4.inOut" }});
+    let tl2 = gsap.timeline({defaults: { ease: "power4.out" }});
         tl2
         .to("#heading2", { duration: 1, opacity: 1, translateX: 0 },"<")
-        .to("#aboutList2 li", { duration: 1, opacity: 1, translateX: 0, stagger: 0.2 })
+        .to("#aboutList2 li", { duration: 1, opacity: 1, translateX: 0, stagger: 0.1 })
     ScrollTrigger.create({
       trigger: "#list2",
       start: "top 90%",
@@ -126,36 +162,45 @@ function AboutChefCharm2({height}) {
       // markers: true,
       animation: tl4,
       onEnter:()=>{
-        gsap.to(".ellipse2", { duration: 1, translateX: "40%",translateY: "-20%",rotate: 270, ease: "power4.inOut", background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)" })
-        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-          gsap.to(".bgGradient",{
-            duration: 2,
-            ease: "power4.out",
-            background: "linear-gradient(266deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)"
-          }).restart()
-         }else{
-         gsap.to(".bgGradient",{
-            duration: 2,
-            ease: "power4.out",
-            background: "linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)"
-          }).restart()
-        }
-      },
-      onLeaveBack:()=>{
-        gsap.to(".ellipse2", { duration: 1, translateX: "40%",translateY: "-20%",rotate: 180, ease: "power4.inOut", background:"linear-gradient(270deg, #000000 0%, #4F1D07 40%, #4F1D07 100%)" })
-
-        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-          gsap.to(".bgGradient",{
-            duration: 2,
-            ease: "power4.out",
-            background: "linear-gradient(263deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)"
-          }).restart()
-        }else{
+        gsap.to(".ellipse2", { duration: 1,rotate: 270, ease: "power4.inOut", background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)" })
         gsap.to(".bgGradient",{
           duration: 2,
           ease: "power4.out",
-          background: "linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)"
-        }).restart()}
+          background:bgGradient("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
+        }).restart()
+        // if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+        //   gsap.to(".bgGradient",{
+        //     duration: 2,
+        //     ease: "power4.out",
+        //     background: "linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)"
+        //   }).restart()
+        //  }else{
+        //  gsap.to(".bgGradient",{
+        //     duration: 2,
+        //     ease: "power4.out",
+        //     background: "linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)"
+        //   }).restart()
+        // }
+      },
+      onLeaveBack:()=>{
+        gsap.to(".ellipse2", { duration: 1,rotate: 180, ease: "power4.inOut", background:"linear-gradient(270deg, #000000 0%, #4F1D07 40%, #4F1D07 100%)" })
+        gsap.to(".bgGradient",{
+          duration: 2,
+          ease: "power4.out",
+          background: bgGradient("linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)","linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)",screenCategory)
+        }).restart()
+        // if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+        //   gsap.to(".bgGradient",{
+        //     duration: 2,
+        //     ease: "power4.out",
+        //     background: "linear-gradient(263deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)"
+        //   }).restart()
+        // }else{
+        // gsap.to(".bgGradient",{
+        //   duration: 2,
+        //   ease: "power4.out",
+        //   background: "linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)"
+        // }).restart()}
       }
     })
     let tl5 = gsap.timeline({defaults: { ease: "power4.inOut" }});
@@ -168,34 +213,44 @@ function AboutChefCharm2({height}) {
       // markers: true,
       animation: tl5,
       onEnter:()=>{
-        gsap.to(".ellipse2", { duration: 1, translateX: "40%",translateY: "-20%",rotate: 450, ease: "power4.inOut", background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)" })
-        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-          gsap.to(".bgGradient",{
-            duration: 2,
-            ease: "power4.out",
-            background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)"
-          }).restart()
-        }else{
+        gsap.to(".ellipse2", { duration: 1, rotate: 450, ease: "power4.inOut", background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)" })
         gsap.to(".bgGradient",{
           duration: 2,
           ease: "power4.out",
-          background: "linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)"
-        }).restart()}
+          background:bgGradient("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
+        }).restart()
+        // if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+        //   gsap.to(".bgGradient",{
+        //     duration: 2,
+        //     ease: "power4.out",
+        //     background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)"
+        //   }).restart()
+        // }else{
+        // gsap.to(".bgGradient",{
+        //   duration: 2,
+        //   ease: "power4.out",
+        //   background: "linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)"
+        // }).restart()}
       },
       onLeaveBack:()=>{
-        gsap.to(".ellipse2", { duration: 1, translateX: "40%",translateY: "-20%",rotate: 270, ease: "power4.inOut", background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)" })
-        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-          gsap.to(".bgGradient",{
-            duration: 2,
-            ease: "power4.out",
-            background: "linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)"
-          }).restart()
-        }else{
+        gsap.to(".ellipse2", { duration: 1, rotate: 270, ease: "power4.inOut", background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)" })
         gsap.to(".bgGradient",{
           duration: 2,
           ease: "power4.out",
-          background: "linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)"
-        }).restart()}
+          background: bgGradient("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
+        }).restart()
+        // if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+        //   gsap.to(".bgGradient",{
+        //     duration: 2,
+        //     ease: "power4.out",
+        //     background: "linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)"
+        //   }).restart()
+        // }else{
+        // gsap.to(".bgGradient",{
+        //   duration: 2,
+        //   ease: "power4.out",
+        //   background: "linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)"
+        // }).restart()}
       }
     })
     function ellipseTop(){
@@ -215,7 +270,7 @@ function AboutChefCharm2({height}) {
        start: "top 90%",
        end: "bottom bottom",
        scrub: 1,
-       markers:true,
+      //  markers:true,
        toggleActions: "restart none none reverse",
 
        onEnter:async()=> {
@@ -231,42 +286,45 @@ function AboutChefCharm2({height}) {
       }, "<")
        .to(".headingUnderline", { duration: 1, color:"#000"}, "<")
       .to(".trees", { duration: 1, opacity: 1},"<" )
-      .to("#bgGif",{
-        duration: 1,
-        scale:1
-      })
-      .to("#bgGifLottie", { duration: 1, rotate:180,top:"60vh",translateX:0,translateY: 0 },"<")
+      gsap.to(".bgGradient",{
+        duration: 2,
+        ease: "power4.out",
+        background:bgGradient("linear-gradient(85deg, rgb(112, 255, 0) 0%, rgb(21, 21, 21) 64%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #A7CDFF 0%, #FFECCF 100%)",screenCategory)
+      }).restart()
        
-       
-       if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-        gsap.to(".bgGradient",{
-          duration: 2,
-          ease: "power4.out",
-          background:"linear-gradient(18deg,#70FF00 0%, #151515 64%, #000000 100%)"
-        }).restart()
-      }else{
-          gsap.to(".bgGradient",{
-          duration: 2,
-          ease: "power4.out",
-          background: "linear-gradient(90deg, #A7CDFF 0%, #FFECCF 100%)"
-          }).restart()
-      }
+      //  if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+      //   gsap.to(".bgGradient",{
+      //     duration: 2,
+      //     ease: "power4.out",
+      //     background:"linear-gradient(85deg, rgb(112, 255, 0) 0%, rgb(21, 21, 21) 64%, rgb(0, 0, 0) 100%)"
+      //   }).restart()
+      // }else{
+      //     gsap.to(".bgGradient",{
+      //     duration: 2,
+      //     ease: "power4.out",
+      //     background: "linear-gradient(90deg, #A7CDFF 0%, #FFECCF 100%)"
+      //     }).restart()
+      // }
       },
        onLeaveBack:async()=> {
         console.log('onLeaveBack ', "finalPage")
-       
-        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-          gsap.to(".bgGradient",{
-            duration: 2,
-            ease: "power4.out",
-            background: "linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)"
-          }).restart()
-        }else{
         gsap.to(".bgGradient",{
           duration: 2,
           ease: "power4.out",
-          background: "linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)"
-        }).restart()}
+          background: bgGradient("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
+        }).restart()
+        // if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+        //   gsap.to(".bgGradient",{
+        //     duration: 2,
+        //     ease: "power4.out",
+        //     background: "linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)"
+        //   }).restart()
+        // }else{
+        // gsap.to(".bgGradient",{
+        //   duration: 2,
+        //   ease: "power4.out",
+        //   background: "linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)"
+        // }).restart()}
 
         let timeline2 = gsap.timeline()
         timeline2
@@ -275,11 +333,6 @@ function AboutChefCharm2({height}) {
           translateX: "40%",
           translateY: "-20%"
         }, "<")
-        .to("#bgGif",{
-          duration: 1,
-          scale:0.95
-        })
-        .to("#bgGifLottie", { duration: 1, rotate:90,top:bgGifY(screenCategory).bgGifTopIntro,translateX:"-37%",translateY: 0 },"<")
         .to(".headingUnderline", { duration: 1, color:"#fff"}, "<")
       .to(".trees", { duration: 1, opacity: 0},"<" )
        
@@ -300,7 +353,7 @@ function AboutChefCharm2({height}) {
       <ListSetFeatures featureId={"feature4"} LaptopMockup={listAndMealPlanner} heading={"Shopping and Meal Planning:"} listArray={featureList4} mockupParentId={"mockupParent6"} mockupId={"mockup6"} headingId={"heading6"} listId={"aboutList6"}/>
       <ListSetFeatures featureId={"feature5"} LaptopMockup={colotThemes} heading={"User-Friendly Experience:"} listArray={featureList5} mockupParentId={"mockupParent7"} mockupId={"mockup7"} headingId={"heading7"} listId={"aboutList7"}/>
       <ListSetFeatures featureId={"techStacks"} LaptopMockup={teckStack2} heading={"What Tech Stack Has Been Used?"} listArray={techStackArr} mockupParentId={"mockupParent8"} mockupId={"mockup8"} headingId={"heading8"} listId={"aboutList8"} isTech/>
-      <div className=" h-[100vh] opacity-50 transparent w-full relative bg-orange-200 z-50 emptySpace">
+      <div className=" h-[10vh] opacity-50 transparent w-full relative z-50 emptySpace" id="aboutEmpty">
     </div>
       <FinalPage/>
     </div>

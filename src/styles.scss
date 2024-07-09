@@ -6,7 +6,7 @@ $headingColor: #fff;
 $primaryTransition: all 0.3s ease-in-out;
 
 html{
-    scroll-behavior: smooth;
+    scroll-behavior:auto;
 }
 .bgGradient {
     background: linear-gradient(90deg, $tertiaryColor 0%, $secondaryColor 100%);
@@ -46,6 +46,9 @@ html{
 .headingUnderline{
     position: relative;
     color: $headingColor;
+    & a{
+        padding: 0.3rem 1rem;
+    }
 }
 
 
@@ -55,7 +58,7 @@ html{
     bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 150%;
+    width: 100%;
     height: 2px;
     background: $headingColor;
     box-shadow: 0 5px 5px rgb(0 0 0 / 80%);
@@ -67,7 +70,7 @@ html{
     bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 150%;
+    width: 100%;
     height: 0px;
     background: $headingColor;
     transition: $primaryTransition;
@@ -77,7 +80,7 @@ html{
     color: white!important;
 }
 .visit .headingUnderline::after{
-    width: 110%;
+    width: 100%;
 }
 .primaryBtn{
     background: $secondaryColor;
@@ -206,6 +209,9 @@ html{
             font-size: 2.5rem;
         }
     }
+    .laptopMockup{
+        width:550px
+    }
     .featureHeading{
         font-size: 2rem;
     }
@@ -236,6 +242,9 @@ html{
     .featureHeading{
         font-size: 2rem;
     }
+    .laptopMockup{
+        width:430px
+    }
     #getStarted{
         font-size: 2.5rem;
         & .scrollArrow{
@@ -260,8 +269,25 @@ html{
     }
 }
 @media screen and (max-width: 700px) {
+    #aboutChefCharm{
+        height: 150vh;
+        align-items: center;
+    }
+    .featuresList{
+        height: 100vh;
+        align-items: center;
+    }
+    #finalPage{
+        display: none;
+    }
+    #aboutEmpty{
+        // display: none;
+    }
+    .featureMockups{
+        height: auto;
+    }
     .bgGradient{
-        background: linear-gradient(263deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%);
+        background: linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%);
     }
     .bgGradientEllipse{
         transform: translateY(-40%);
@@ -297,7 +323,7 @@ html{
         font-size: 1.5rem;
     }   
     #aboutList, #aboutList2, #aboutList3,.featuresAboutList{
-        font-size: 1rem;
+        font-size: 0.9rem;
         margin: 1rem;
         margin-bottom: 0;
         margin-right: 0;

@@ -60,7 +60,7 @@ function ChefCharmIntro2() {
         start: "top 90%",
         id: "introChefCharm",
         end: "bottom bottom",
-        markers: true,
+        // markers: true,
         scrub: 1,
         
         onEnter: () => {

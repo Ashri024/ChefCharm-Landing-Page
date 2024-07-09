@@ -18,8 +18,8 @@ function Ellipse({height,idName}) {
       height: height,
       minHeight: '100vh',
     }}>
-      <img src={Clouds} alt="Clouds" className='absolute top-8 left-0 w-full object-cover object-center clouds z-10 trees opacity-0'/>
-      <div className={`bgGradientEllipse ${idName} relative rounded-full z-0`}>
+      <img src={Clouds} alt="Clouds" className='absolute top-8 left-0 w-full object-cover object-center clouds z-0 trees opacity-0'/>
+      <div className={`bgGradientEllipse ${idName} relative rounded-full z-10`}>
         <img src={ChefCharmTitle} alt="ChefCharmTitle" className='absolute -top-[150px] left-1/2 -translate-x-1/2 w-[250px] object-center trees z-[50] opacity-0'/>
         <img src={billboard} alt="billboard" className='absolute trees -top-[220px] left-1/2 -translate-x-1/2 w-[350px] object-center trees z-10 opacity-0'/>
         <img src={trees} alt="trees" className='absolute -top-[110px] scale-[0.9] left-0 w-full object-center trees z-10 opacity-0'/>

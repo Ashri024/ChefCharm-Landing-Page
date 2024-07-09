@@ -5,7 +5,7 @@ ListSet.propTypes = {
 }
 function ListSet({LaptopMockup}) {
   return (
-    <div className="h-[350vh] transparent w-full relative z-50 overflow-hidden flex items-end justify-around max-[700px]:flex-col pt-12" id="aboutChefCharm">
+    <div className="h-[350vh] transparent w-full relative z-50 overflow-hidden flex items-end justify-start gap-0 lg:gap-[5%] xl:gap-[20%] max-[700px]:flex-col pt-12 p-4" id="aboutChefCharm">
 
       <div id="mockupParent1" className="laptopMockup relative h-full">
         <div id="mockup1" className='laptopMockup h-[550px] max-[1024px]:h-[450px] opacity-0 -translate-x-full'>
@@ -13,9 +13,9 @@ function ListSet({LaptopMockup}) {
         </div>
       </div>
 
-      <div className='w-full min-[700px]:w-2/3 max-w-[540px] flex flex-col justify-around items-center h-[80%]'>
+      <div className='w-full min-[700px]:w-2/3 max-w-[540px] flex flex-col justify-around items-center h-[80%]' id="whatAbout">
         <div style={{ padding:"1rem", position:"relative",height:"50%"}} className=' flex flex-col justify-center'>
-          <div className='h-[110px] relative min-w-[450px] max-[1024px]:min-w-[350px] max-[700px]:top-0'>
+          <div className='h-[110px] relative min-w-[450px] max-[1024px]:min-w-[310px] max-[700px]:top-0'>
 
             <div className="relative whatIs translate-x-1/2 opacity-0" id="heading1">
               What Actually is <br/><span>ChefCharm</span> ?
@@ -31,7 +31,7 @@ function ListSet({LaptopMockup}) {
         </div>
 
         <div style={{ padding:"1rem", position:"relative",height:"50%"}} className='flex flex-col justify-center' id="list2">
-          <div className=' relative min-w-[450px] max-[1024px]:min-w-[350px] max-[700px]:top-0 '>
+          <div className=' relative min-w-[450px] max-[1024px]:min-w-[310px] max-[700px]:top-0 '>
 
             <div className="relative whatIs translate-x-1/2 opacity-0" id="heading2">
               What Actually are its <br/><span>Features</span> ?

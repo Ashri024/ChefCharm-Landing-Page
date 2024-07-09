@@ -14,11 +14,11 @@ function Navigation({setIsSidePanelOpen}) {
   return (
     <div className=" w-full py-4 bg-transparent flex justify-between lg:justify-end items-center px-4 fixed top-0 z-[1000] gap-8">
       {/* <div className="flex gap-4"> */}
-            <ul className="gap-10 text-lg hidden lg:flex ">
+            <ul className="gap-4 text-lg hidden lg:flex ">
             <li className="headingUnderline"><a href="#introChefCharm" onClick={(e)=>navigateInstantly(e)}>Home</a></li>
-            <li className="headingUnderline"><a href="#aboutChefCharm" onClick={(e)=>navigateInstantly(e)}>About</a></li>
-            <li className="headingUnderline"><a href="#feature1" onClick={(e)=>navigateInstantly(e)}>Features</a></li>
-            <li className="headingUnderline"><a href="#techStacks" onClick={(e)=>navigateInstantly(e)}>Tech</a></li>
+            <li className="headingUnderline"><a href="#whatAbout" onClick={(e)=>navigateInstantly(e)}>About</a></li>
+            <li className="headingUnderline"><a href="#mockupParent3" onClick={(e)=>navigateInstantly(e)}>Features</a></li>
+            <li className="headingUnderline"><a href="#mockupParent8" onClick={(e)=>navigateInstantly(e)}>Tech</a></li>
             </ul>
             <button className="lg:hidden" onClick={()=>setIsSidePanelOpen(true)}>
               <GiHamburgerMenu style={{

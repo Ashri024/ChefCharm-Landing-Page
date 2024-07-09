@@ -35,7 +35,7 @@ function BackgroundGif({height}) {
     }, [])
 
   return (
-    <div className='z-0 -top-64 fixed left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden max-[700px]:hidden' id="bgGif" style={{
+    <div className='z-0 -top-[23rem] fixed left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden max-[700px]:hidden' id="bgGif" style={{
         height: height,
         transform: "scale(0.95)",
         opacity: 0
