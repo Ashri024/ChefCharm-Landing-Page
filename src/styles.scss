@@ -14,6 +14,9 @@ html{
 .bgGradient {
     background: linear-gradient(90deg, $tertiaryColor 0%, $secondaryColor 100%);
 }
+.bgGradient2 {
+    background: linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%);
+}
 .bgGradientColorEllipse{
     background: linear-gradient(270deg, #000000 0%, $primaryColor 40%, $primaryColor 100%);
 }
@@ -292,14 +295,14 @@ html{
     #finalPage{
         display: none;
     }
-    #aboutEmpty{
-        // display: none;
-    }
     .featureMockups{
         height: auto;
     }
     .bgGradient{
         background: linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%);
+    }
+    .bgGradient2 {
+        background: linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)
     }
     .bgGradientEllipse{
         transform: translateY(-40%);

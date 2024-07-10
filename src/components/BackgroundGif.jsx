@@ -9,9 +9,11 @@ import { AnimationContext } from '../contexts';
 
 BackgroundGif.propTypes = {
   height: PropTypes.string,
+  idName: PropTypes.string,
+  idLottie: PropTypes.string
 }
 
-function BackgroundGif({height}) {
+function BackgroundGif({height, idName="bgGif", idLottie="bgGifLottie"}) {
     const {bgGifTopValues,screenCategory} = useContext(AnimationContext);
     const calculateTop = useCallback(() => {
       return bgGifTopValues[screenCategory]
@@ -35,14 +37,14 @@ function BackgroundGif({height}) {
     }, [])
 
   return (
-    <div className='z-0 -top-[23rem] fixed left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden max-[700px]:hidden' id="bgGif" style={{
+    <div className='z-0 -top-[23rem] fixed left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden max-[700px]:hidden' id={idName} style={{
         height: height,
         transform: "scale(0.95)",
         opacity: 0
     }}>
         <div className='absolute left-0 pointer-events-none w-full z-0' style={{
           top: calculateTop()
-        }} id="bgGifLottie">
+        }} id={idLottie}>
             <div className='w-full h-full object-cover object-center'>
             <Lottie options={defaultOptions}
             height={"100%"}
@@ -52,8 +54,9 @@ function BackgroundGif({height}) {
             />
             </div>
         </div>
-        <div className=' absolute right-10 flex gap-2 items-center text-slate-600 text-xl font-semibold hover:text-black z-10 opacity-0 translate-x-full max-[700px]:hidden' id="scrollMore" style={{
-          top:'88vh'
+        <div className=' absolute right-10 gap-2 items-center text-slate-600 text-xl font-semibold hover:text-black z-10 opacity-0 translate-x-full max-[700px]:hidden' id="scrollMore" style={{
+          top:'88vh',
+          display: idName !== 'bgGif' ? 'none' : 'flex'
         }}>
           <PiArrowFatLineDownFill className='scrollArrow' style={{
             fontSize: '1.8rem',

@@ -39,9 +39,8 @@ function ListSet({LaptopMockup}) {
           </div>
           <div className='relative mt-2 min-[700px]:mt-4'>
             <ul id="aboutList2" className="relative max-w-[90%] featuresAboutList max-[700px]:max-w-full">
-              <li className='mb-4 translate-x-1/2 opacity-0'>It is an innovative recipe web application designed to elevate your cooking experience. </li>
-              <li className='mb-4 translate-x-1/2 opacity-0'>It offers a seamless and interactive way to discover, create, and manage recipes, leveraging advanced technologies.</li>
-              <li className='mb-4 translate-x-1/2 opacity-0'>It uses AI to bring culinary inspiration to your fingertips.</li>
+              <li className='mb-4 translate-x-1/2 opacity-0'>Whether you&apos;re a professional chef or an enthusiastic home cook, ChefCharm offers a comprehensive suite of features to streamline your recipe discovery, creation, and organization. </li>
+              <li className='mb-4 translate-x-1/2 opacity-0'>Let&apos;s delve into the key features that make ChefCharm a must-have tool for every cooking enthusiast</li>
             </ul>
           </div>
         </div>

@@ -14,6 +14,7 @@ import colotThemes from '../assets/ColorThemes.png';
 import listAndMealPlanner from '../assets/listAndMealPlanner.png';
 import teckStack2 from '../assets/techStackFinal.png';
 import FinalPage from './FinalPage';
+import BackgroundGif from './BackgroundGif';
 
 AboutChefCharm2.propTypes = {
   height: PropTypes.string,
@@ -32,7 +33,7 @@ function ellipse2Translate(screenCategory){
     return {translateX, translateY}
   }
 }
-function bgGradient(gradient1, gradient2,screen){
+function bgGradient2(gradient1, gradient2,screen){
   if(screen === 'mq700' || screen === 'mq500'){
     return gradient1
   }
@@ -48,15 +49,16 @@ function position(screen){
 function AboutChefCharm2({height}) {
   const {screenCategory,translateYValues,tl2Global,onPageEnterAnimation,onChangeEnterAnimation,bgGifY} = useContext(AnimationContext);
   let featureList1= ["ChefCharm leverages the power of the Edamam API to offer a vast collection of recipes from various cuisines.","Users can easily search for recipes using keywords, and the app provides auto-suggestions after typing three or more characters.","Additionally, users can refine their searches by applying filters based on meal types, cuisine types and dish types."]
-  let featureList2= ["ChefCharm offers multiple ways to create and add recipes to your collection.","Users can import recipes from websites, PDFs, and images, making it easy to digitize favourite recipes. ","Manual recipe creation is also provided. Additionally, Chef Gemini, also helps craft new recipes with suggestions, making it easy for everyone to cook delicious meals."]
-  let featureList3= ["Managing your recipe collection is a breeze with ChefCharm.","Users can save their rehcipes, add them to their saved and favourite lists separately, edit them to suit personal preferences, and add notes for future reference. ","The app also tracks your recipe history, allowing you to revisit previously explored recipes. For added convenience, ChefCharm also offers random recipe suggestions."]
-  let featureList4=["Users can add ingredients from any recipe directly to their shopping list, ensuring they never miss an item while at the store. ","The app also allows for meal planning on specific dates, helping users organize their cooking schedule efficiently.","Additionally, inbuilt timers are provided to manage cooking times, ensuring that every dish is cooked to perfection."]
+  let featureList2= ["ChefCharm offers multiple ways to create and add recipes to your collection.","Users can import recipes from websites, PDFs, and images, making it easy to digitize favorite recipes. ","Manual recipe creation is also provided. Additionally, Chef Gemini also helps craft new recipes with suggestions, making it easy for everyone to cook delicious meals."]
+  let featureList3= ["Managing your recipe collection is a breeze with ChefCharm.","Users can save their recipes, add them to their saved and favorite lists separately, edit them to suit personal preferences, and add notes for future reference. ","The app also tracks your recipe history, allowing you to revisit previously explored recipes. For added convenience, ChefCharm also offers random recipe suggestions."]
+  let featureList4=["Users can add ingredients from any recipe directly to their shopping list, ensuring they never miss an item while at the store. ","The app also allows for meal planning on specific dates, helping users organize their cooking schedule efficiently.","Additionally, built-in timers are provided to manage cooking times, ensuring that every dish is cooked to perfection."]
   let featureList5=["ChefCharm is designed with the user in mind, offering a seamless and personalized experience. ","Users can log in using their Google, Facebook, or email/password credentials, providing flexible and secure access options.","The app also features three distinct themes, allowing users to customize the interface according to their aesthetic preferences."]
-  let techStackArr=[{title:"Frontend",text:"React, MUI, Tailwind CSS."},{title:"Backend",text:"Node.js, Express, MongoDB Atlas, Mongoose"},
+  let techStackArr=[{title:"Frontend",text:"React, MUI, Tailwind CSS"},{title:"Backend",text:"Node.js, Express, MongoDB Atlas, Mongoose"},
     {title:"Authentication",text:"Passport.js, JWT, Bcrypt, OAuth2.0"},
     {title:"Caching & State Management", text:"Redis, React-Query, useContext"},
-    {title:"APIs",text:"Edamam, Google OAuth, Gemini API"},{title:"Deployment",text:"Heroku, Netlify."},{title:"Version Control",text:"Git, GitHub."},{title:"Tools",text:"Figma, Thunder Client, VS Code."},
-    {title: "GraphQL", text: "Apollo Client, Apollo Server, GraphQL Yoga."}
+    {title:"APIs",text:"Edamam, Google OAuth, Gemini API, Axios"},{title:"Tools & VCs",text:"Figma, Thunder Client, VS Code, Vite, Git, GitHub"},
+    {title: "GraphQL", text: "Apollo Client, Apollo Server"},
+    {title: "Data Extraction & Processing", text: "Cheerio (Web Scraping), Tesseract.js (OCR)"}
   ]
 
   useEffect(() => {
@@ -66,7 +68,19 @@ function AboutChefCharm2({height}) {
     gsap.set(".ellipse2", { translateX:"100%", immediateRender:true })
 
     let tl= gsap.timeline({defaults: { ease: "power4.out" }});
-    tl.to("#mockup1", {
+   
+
+    ScrollTrigger.create({
+      // animation: tl,
+      trigger: "#aboutChefCharm",
+      start: "top 20%",
+      end: "bottom bottom",
+      id: "aboutChefCharm",
+      markers: true,
+      toggleActions: "restart none none reverse",
+      onEnter: () => {
+        // gsap.killTweensOf(tl)
+        tl.to("#mockup1", {
           duration: 0.5,
           position: position(screenCategory),
           top:"3rem",
@@ -74,33 +88,33 @@ function AboutChefCharm2({height}) {
           translateX:0,
           opacity:1
         })
+        .to("#bgGifLottie2", { duration: 0.5, rotate:90,
+          scale:0.7,
+          top:bgGifY(screenCategory).bgGifTopIntro,translateX:"-40%",translateY: 0 },"<")
+        .to("#bgGif2",{
+          duration: 0.5,
+          // top:"-16rem",
+          opacity:1,
+          ease: "power1.in"
+        }, "<")
         .to("#heading1", { duration: 0.5, opacity: 1, translateX: 0 },"<")
-        .to("#aboutList li", { duration: 0.5, opacity: 1, translateX: 0, stagger: 0.1 })
-        .to(".bgGradient",{
-
-          duration: 3,
-          ease: "power4.out",
-          background: bgGradient("linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)","linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 100%)",screenCategory)
-        })
-
-    ScrollTrigger.create({
-      animation: tl,
-      trigger: "#aboutChefCharm",
-      start: "top 20%",
-      end: "bottom bottom",
-      id: "aboutChefCharm",
-      toggleActions: "restart none none reverse",
-      onEnter: () => {
-        gsap.to(".ellipse2", { duration: 0.5, translateX: ellipse2Translate(screenCategory).translateX,translateY: ellipse2Translate(screenCategory).translateY,rotate: 180, ease: "power4.inOut",  })
+        .to("#aboutList li", { duration: 0.5, opacity: 1, translateX: 0, stagger: 0.1 },"<")
+        tl.restart()
+        gsap.killTweensOf(".ellipse2")
+        gsap.to(".ellipse2", { duration: 0.5, translateX: ellipse2Translate(screenCategory).translateX,translateY: ellipse2Translate(screenCategory).translateY,rotate: 180, ease: "power4.inOut",
+          background:"linear-gradient(270deg, #000000 0%, #4F1D07 40%, #4F1D07 100%)"
+          })
         console.log("AboutChefCharm2 entered")
       },
       onLeaveBack: async() => {  
-        await tl.timeScale(2).reverse()
+        console.log("AboutChefCharm2 left back")
         console.log(document.querySelector(".ellipse2").style.transform)
-        if(document.querySelector(".ellipse2").style.transform !== "translate(100%, -55%)"){
-          console.log("executed")
+        tl.timeScale(3).reverse()
+
+        gsap.killTweensOf(".ellipse2")
         gsap.to(".ellipse2", { duration: 1, rotate: 90, translateX:"100%", ease: "power4.inOut",})
-        }
+        // }
+       
       },
       onLeave: () => {
         // Select the parent container and the mockup element
@@ -161,18 +175,18 @@ function AboutChefCharm2({height}) {
       animation: tl4,
       onEnter:()=>{
         gsap.to(".ellipse2", { duration: 1,rotate: 270, ease: "power4.inOut", background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)" })
-        gsap.to(".bgGradient",{
+        gsap.to(".bgGradient2",{
           duration: 2,
           ease: "power4.out",
-          background:bgGradient("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
+          background:bgGradient2("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
         }).restart()
       },
       onLeaveBack:()=>{
         gsap.to(".ellipse2", { duration: 1,rotate: 180, ease: "power4.inOut", background:"linear-gradient(270deg, #000000 0%, #4F1D07 40%, #4F1D07 100%)" })
-        gsap.to(".bgGradient",{
+        gsap.to(".bgGradient2",{
           duration: 2,
           ease: "power4.out",
-          background: bgGradient("linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)","linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)",screenCategory)
+          background: bgGradient2("linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)","linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)",screenCategory)
         }).restart()
       }
     })
@@ -187,18 +201,18 @@ function AboutChefCharm2({height}) {
       animation: tl5,
       onEnter:()=>{
         gsap.to(".ellipse2", { duration: 1, rotate: 450, ease: "power4.inOut", background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)" })
-        gsap.to(".bgGradient",{
+        gsap.to(".bgGradient2",{
           duration: 2,
           ease: "power4.out",
-          background:bgGradient("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
+          background:bgGradient2("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
         }).restart()
       },
       onLeaveBack:()=>{
         gsap.to(".ellipse2", { duration: 1, rotate: 270, ease: "power4.inOut", background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)" })
-        gsap.to(".bgGradient",{
+        gsap.to(".bgGradient2",{
           duration: 2,
           ease: "power4.out",
-          background: bgGradient("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
+          background: bgGradient2("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
         }).restart()
       }
     })
@@ -233,21 +247,24 @@ function AboutChefCharm2({height}) {
         translateX: 0,
         translateY:ellipseTop()
       }, "<")
-       .to(".headingUnderline", { duration: 1, color:"#000"}, "<")
-      .to(".trees", { duration: 1, opacity: 1},"<" )
-      gsap.to(".bgGradient",{
+      .to("#bgGif2", { duration: 0.5, opacity:0},"<")
+       .to(".headingUnderline", { duration: 0.5, color:"#000"}, "<")
+      .to(".trees", { duration: 0.5, opacity: 1},"<" )
+      
+
+      gsap.to(".bgGradient2",{
         duration: 2,
         ease: "power4.out",
-        background:bgGradient("linear-gradient(85deg, rgb(112, 255, 0) 0%, rgb(21, 21, 21) 64%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #A7CDFF 0%, #FFECCF 100%)",screenCategory)
+        background:bgGradient2("linear-gradient(85deg, rgb(112, 255, 0) 0%, rgb(21, 21, 21) 64%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #A7CDFF 0%, #FFECCF 100%)",screenCategory)
       }).restart()
        
       },
        onLeaveBack:async()=> {
         console.log('onLeaveBack ', "finalPage")
-        gsap.to(".bgGradient",{
+        gsap.to(".bgGradient2",{
           duration: 2,
           ease: "power4.out",
-          background: bgGradient("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
+          background: bgGradient2("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
         }).restart()
 
         let timeline2 = gsap.timeline()
@@ -257,9 +274,9 @@ function AboutChefCharm2({height}) {
           translateX: "40%",
           translateY: "-20%"
         }, "<")
-        .to(".headingUnderline", { duration: 1, color:"#fff"}, "<")
-      .to(".trees", { duration: 1, opacity: 0},"<" )
-       
+        .to(".headingUnderline", { duration: 0.5, color:"#fff"}, "<")
+      .to(".trees", { duration: 0.5, opacity: 0},"<" )
+       .to("#bgGif2", { duration: 0.5, opacity:1})
        },
      })
 
@@ -267,8 +284,9 @@ function AboutChefCharm2({height}) {
 
   return (
     <div className=" opacity-100 transparent w-full relative z-[70]" >
-      <div className='absolute top-0 left-0 w-full h-full opacity-100 bgGradient'></div>
+      <div className='absolute top-0 left-0 w-full h-full opacity-100 bgGradient2'></div>
       <Ellipse height={height} idName={"ellipse2"} />
+      <BackgroundGif height={height} idName='bgGif2' idLottie='bgGifLottie2'/>
       <ListSet LaptopMockup={LaptopMockup} />
       <ListSetFeatures featureId={"feature1"} LaptopMockup={HomePage} heading={"Comprehensive Recipe Search"} listArray={featureList1} mockupParentId={"mockupParent3"} mockupId={"mockup3"} headingId={"heading3"} listId={"aboutList3"}/>
 
