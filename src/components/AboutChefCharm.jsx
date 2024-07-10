@@ -76,7 +76,7 @@ function AboutChefCharm2({height}) {
       start: "top 20%",
       end: "bottom bottom",
       id: "aboutChefCharm",
-      markers: true,
+      // markers: true,
       toggleActions: "restart none none reverse",
       onEnter: () => {
         // gsap.killTweensOf(tl)
