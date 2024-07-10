@@ -66,9 +66,7 @@ function AboutChefCharm2({height}) {
     gsap.set(".ellipse2", { translateX:"100%", immediateRender:true })
 
     let tl= gsap.timeline({defaults: { ease: "power4.out" }});
-    tl
-    .to(".ellipse2", { duration: 0.5, translateX: ellipse2Translate(screenCategory).translateX,translateY: ellipse2Translate(screenCategory).translateY,rotate: 180, ease: "power4.inOut",  })
-    .to("#mockup1", {
+    tl.to("#mockup1", {
           duration: 0.5,
           position: position(screenCategory),
           top:"3rem",
@@ -93,7 +91,7 @@ function AboutChefCharm2({height}) {
       id: "aboutChefCharm",
       toggleActions: "restart none none reverse",
       onEnter: () => {
-        
+        gsap.to(".ellipse2", { duration: 0.5, translateX: ellipse2Translate(screenCategory).translateX,translateY: ellipse2Translate(screenCategory).translateY,rotate: 180, ease: "power4.inOut",  })
         console.log("AboutChefCharm2 entered")
       },
       onLeaveBack: async() => {  
@@ -139,8 +137,8 @@ function AboutChefCharm2({height}) {
 
     let tl2 = gsap.timeline({defaults: { ease: "power4.out" }});
         tl2
-        .to("#heading2", { duration: 1, opacity: 1, translateX: 0 },"<")
-        .to("#aboutList2 li", { duration: 1, opacity: 1, translateX: 0, stagger: 0.1 })
+        .to("#heading2", { duration: 0.5, opacity: 1, translateX: 0 },"<")
+        .to("#aboutList2 li", { duration: 0.5, opacity: 1, translateX: 0, stagger: 0.1 })
     ScrollTrigger.create({
       trigger: "#list2",
       start: "top 90%",
@@ -168,19 +166,6 @@ function AboutChefCharm2({height}) {
           ease: "power4.out",
           background:bgGradient("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
         }).restart()
-        // if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-        //   gsap.to(".bgGradient",{
-        //     duration: 2,
-        //     ease: "power4.out",
-        //     background: "linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)"
-        //   }).restart()
-        //  }else{
-        //  gsap.to(".bgGradient",{
-        //     duration: 2,
-        //     ease: "power4.out",
-        //     background: "linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)"
-        //   }).restart()
-        // }
       },
       onLeaveBack:()=>{
         gsap.to(".ellipse2", { duration: 1,rotate: 180, ease: "power4.inOut", background:"linear-gradient(270deg, #000000 0%, #4F1D07 40%, #4F1D07 100%)" })
@@ -189,18 +174,6 @@ function AboutChefCharm2({height}) {
           ease: "power4.out",
           background: bgGradient("linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)","linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)",screenCategory)
         }).restart()
-        // if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-        //   gsap.to(".bgGradient",{
-        //     duration: 2,
-        //     ease: "power4.out",
-        //     background: "linear-gradient(263deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)"
-        //   }).restart()
-        // }else{
-        // gsap.to(".bgGradient",{
-        //   duration: 2,
-        //   ease: "power4.out",
-        //   background: "linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)"
-        // }).restart()}
       }
     })
     let tl5 = gsap.timeline({defaults: { ease: "power4.inOut" }});
@@ -219,18 +192,6 @@ function AboutChefCharm2({height}) {
           ease: "power4.out",
           background:bgGradient("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
         }).restart()
-        // if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-        //   gsap.to(".bgGradient",{
-        //     duration: 2,
-        //     ease: "power4.out",
-        //     background:"linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)"
-        //   }).restart()
-        // }else{
-        // gsap.to(".bgGradient",{
-        //   duration: 2,
-        //   ease: "power4.out",
-        //   background: "linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)"
-        // }).restart()}
       },
       onLeaveBack:()=>{
         gsap.to(".ellipse2", { duration: 1, rotate: 270, ease: "power4.inOut", background:"linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)" })
@@ -239,18 +200,6 @@ function AboutChefCharm2({height}) {
           ease: "power4.out",
           background: bgGradient("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
         }).restart()
-        // if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-        //   gsap.to(".bgGradient",{
-        //     duration: 2,
-        //     ease: "power4.out",
-        //     background: "linear-gradient(18deg, #000000 47%, #1D074F 64%, #3F00CE 100%)"
-        //   }).restart()
-        // }else{
-        // gsap.to(".bgGradient",{
-        //   duration: 2,
-        //   ease: "power4.out",
-        //   background: "linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)"
-        // }).restart()}
       }
     })
     function ellipseTop(){
@@ -292,19 +241,6 @@ function AboutChefCharm2({height}) {
         background:bgGradient("linear-gradient(85deg, rgb(112, 255, 0) 0%, rgb(21, 21, 21) 64%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #A7CDFF 0%, #FFECCF 100%)",screenCategory)
       }).restart()
        
-      //  if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-      //   gsap.to(".bgGradient",{
-      //     duration: 2,
-      //     ease: "power4.out",
-      //     background:"linear-gradient(85deg, rgb(112, 255, 0) 0%, rgb(21, 21, 21) 64%, rgb(0, 0, 0) 100%)"
-      //   }).restart()
-      // }else{
-      //     gsap.to(".bgGradient",{
-      //     duration: 2,
-      //     ease: "power4.out",
-      //     background: "linear-gradient(90deg, #A7CDFF 0%, #FFECCF 100%)"
-      //     }).restart()
-      // }
       },
        onLeaveBack:async()=> {
         console.log('onLeaveBack ', "finalPage")
@@ -313,18 +249,6 @@ function AboutChefCharm2({height}) {
           ease: "power4.out",
           background: bgGradient("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
         }).restart()
-        // if(screenCategory === 'mq700' || screenCategory === 'mq500'){
-        //   gsap.to(".bgGradient",{
-        //     duration: 2,
-        //     ease: "power4.out",
-        //     background: "linear-gradient(18deg,#BA061A 0%, #151515 50%, #000000 100%)"
-        //   }).restart()
-        // }else{
-        // gsap.to(".bgGradient",{
-        //   duration: 2,
-        //   ease: "power4.out",
-        //   background: "linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)"
-        // }).restart()}
 
         let timeline2 = gsap.timeline()
         timeline2

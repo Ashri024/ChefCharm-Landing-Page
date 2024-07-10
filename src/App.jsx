@@ -36,10 +36,10 @@ function App() {
     <AboutChefCharm height={height} />
     
     <div className='flex items-center justify-around w-full fixed top-[95vh] left-0 text-lg text-gray-200 z-[100] trees opacity-0'>
-        <span className='hover:underline cursor-pointer'>Go to Start</span>
-        <span className='hover:underline cursor-pointer'>Visit ChefCharm</span>
-        <span className='hover:underline cursor-pointer'>LinkedIn</span>
-        <span className='hover:underline cursor-pointer'>Email</span>
+        <a href='#introChefCharm' className='hover:underline cursor-pointer'>Go to Start</a>
+        <a className='hover:underline cursor-pointer'>Visit ChefCharm</a>
+        <a href='https://www.linkedin.com/in/ashri-mallick-1a04111bb/' target='_blank' className='hover:underline cursor-pointer'>LinkedIn</a>
+        <a href='mailto:ashrimallick0245@gmail.com' className='hover:underline cursor-pointer'>Email</a>
       </div>
    </div>
   )

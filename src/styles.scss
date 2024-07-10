@@ -1,4 +1,7 @@
 //Vairables
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 $primaryColor: #4F1D07;
 $secondaryColor: #FFD9D9;
 $tertiaryColor: #B9B9B9;
@@ -80,7 +83,8 @@ html{
     color: white!important;
 }
 .visit .headingUnderline::after{
-    width: 100%;
+    box-shadow: none;
+    width: 110%;
 }
 .primaryBtn{
     background: $secondaryColor;
@@ -128,29 +132,37 @@ html{
 }
 
 .whatIs{
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     color: #fff;
     font-weight: 500;
     transition: $primaryTransition;
+    font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 .whatIs{
     & span{
         text-decoration: underline $secondaryColor;
         margin-left: 14rem;
-        font-size: 3rem;
+        font-size: 2.8rem;
         color: $secondaryColor;
     }
 }
 .featureHeading{
     text-decoration: underline $secondaryColor;
-    font-size: 2.3rem;
+    font-size: 2.1rem;
     color: $secondaryColor;
 }
 
 #aboutList,.featuresAboutList{
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
     color: white;
     margin-top: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     list-style: disc;
     margin-left: 1rem;
     & li{

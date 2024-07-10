@@ -49,7 +49,7 @@ function ListSetFeatures({LaptopMockup,mockupParentId,mockupId,headingId,listId,
 
       <div className='w-full min-[700px]:w-2/3 max-w-[540px] flex flex-col justify-around items-center h-[60%]'>
         <div style={{ padding:"1rem", position:"relative",height:"50%"}} className=' flex flex-col justify-center'>
-          <div className='relative min-w-[450px] max-[1024px]:min-w-[310px] max-[700px]:top-0'>
+          <div className='relative min-w-[465px] max-[1024px]:min-w-[310px] max-[700px]:top-0'>
 
             <div className="relative whatIs translate-x-1/2 opacity-0 featureHeading" id={headingId}>
               {heading}

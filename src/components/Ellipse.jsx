@@ -25,11 +25,11 @@ function Ellipse({height,idName}) {
         <img src={trees} alt="trees" className='absolute -top-[110px] scale-[0.9] left-0 w-full object-center trees z-10 opacity-0'/>
         <img src={EllipseSvg} alt="Ellipse" className='absolute top-0 left-0 w-full h-full object-cover object-center ellipseSvg z-0'/>
         
-        <div className='text-white absolute top-[200px] -translate-y-1/2 left-1/2 trees -translate-x-1/2 visit opacity-0'>
-          <p className='text-2xl headingUnderline mb-6'>Like My Website? Contact me through:</p>
+        <div className='text-white absolute top-[200px] -translate-y-1/2 left-1/2 trees -translate-x-1/2 visit opacity-0 z-20'>
+          <p className='text-2xl headingUnderline mb-6 pointer-events-none font-semibold'>Like My Website? Contact me through:</p>
           <div>
-            <p className='text-center text-xl'>Email: ashriarya@gmail.com</p>
-            <p className='text-center text-xl'>LinkedIn: www.linkedin.come</p>
+            <a href="mailto:ashrimallick0245@gmail.com" className='text-center mb-1 text-xl block hover:text-slate-300'>Email: ashrimallick0245@gmail.com</a>
+            <a href='https://www.linkedin.com/in/ashri-mallick-1a04111bb/' target='_blank' className='text-center mb-1 text-xl block hover:text-slate-300'>LinkedIn: Ashri Mallick</a>
           </div>
         </div>
       </div>
