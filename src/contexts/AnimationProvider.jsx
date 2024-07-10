@@ -54,7 +54,7 @@ function AnimationProvider({children}) {
     }
     else if(screenCategory === 'mq1024') {
       let bgGifTop = "50vh";
-      let bgGifTopIntro = "40vh";
+      let bgGifTopIntro = "35vh";
       return {bgGifTop,bgGifTopIntro}
     }
     else if(screenCategory === 'mq1280') {
