@@ -26,7 +26,7 @@ function Navigation({setIsSidePanelOpen}) {
                 fontSize: '1.6rem'
               }} />
             </button>
-            <button className="primaryBtn text-base font-semibold">Get Started</button>
+            <button className="primaryBtn text-base font-semibold disabled:opacity-80 disabled:pointer-events-none" disabled>Coming Soon</button>
             {/* </div> */}
     </div>
   )

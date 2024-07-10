@@ -37,7 +37,7 @@ function App() {
     
     <div className='flex items-center justify-around w-full fixed top-[95vh] left-0 text-lg text-gray-200 z-[100] trees opacity-0'>
         <a href='#introChefCharm' className='hover:underline cursor-pointer'>Go to Start</a>
-        <a className='hover:underline cursor-pointer'>Visit ChefCharm</a>
+        {/* <a className='hover:underline cursor-pointer'></a> */}
         <a href='https://www.linkedin.com/in/ashri-mallick-1a04111bb/' target='_blank' className='hover:underline cursor-pointer'>LinkedIn</a>
         <a href='mailto:ashrimallick0245@gmail.com' className='hover:underline cursor-pointer'>Email</a>
       </div>
