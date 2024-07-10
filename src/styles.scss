@@ -284,12 +284,20 @@ html{
     }
 }
 @media screen and (max-width: 700px) {
+    #getStarted{
+        font-size: 2.3rem;
+        & .scrollArrow{
+            font-size: 2.3rem;
+        }
+    }
+    .ellipse2{
+        display: none;
+    }
     #aboutChefCharm{
-        height: 150vh;
+        height: 900px;
         align-items: center;
     }
     .featuresList{
-        height: 100vh;
         align-items: center;
     }
     #finalPage{
@@ -299,10 +307,10 @@ html{
         height: auto;
     }
     .bgGradient{
-        background: linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%);
+        background: linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%);
     }
     .bgGradient2 {
-        background: linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)
+        background: linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%);
     }
     .bgGradientEllipse{
         transform: translateY(-40%);
@@ -326,13 +334,21 @@ html{
     }
     .whatIs{
         font-size: 1.5rem;
+        color:#303030;
+        font-weight: 500;
         & span{
             font-size: 1.5rem;
             margin-left: 7rem;
+            color: $primaryColor;
+            text-decoration: underline $primaryColor;
+            font-weight: 800;
         }
     }
     .featureHeading{
         font-size: 1.5rem;
+        color: $primaryColor;
+        text-decoration: underline $primaryColor;
+        font-weight: 800;
     }
     #typewriter .Typewriter__cursor{
         font-size: 1.5rem;
@@ -342,6 +358,11 @@ html{
         margin: 1rem;
         margin-bottom: 0;
         margin-right: 0;
+        font-weight: 500;
+        color: #303030;
+    }
+    #bgGif2{
+        display: none;
     }
 }
 @media screen and (max-width: 500px) {

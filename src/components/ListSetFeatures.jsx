@@ -39,10 +39,10 @@ function ListSetFeatures({LaptopMockup,mockupParentId,mockupId,headingId,listId,
   },[headingId, listId, mockupId, mockupParentId])
     
   return (
-    <div className="h-[200vh] max-[700px]:h-[100vh] transparent w-full relative z-50 overflow-hidden flex items-center justify-around max-[700px]:flex-col  featuresList p-4 pt-12" id={featureId}>
+    <div className={`h-[200vh] ${isTech?"max-[700px]:h-[780px]":"max-[700px]:h-[700px]"} transparent w-full relative z-50 overflow-hidden flex items-center justify-around max-[700px]:flex-col  featuresList p-4 pt-12`} id={featureId}>
     <div className=' absolute opacity-20 top-0 left-0 w-full h-full'></div>
-      <div id={mockupParentId} className="laptopMockup relative h-[60%] flex items-center justify-center">
-        <div id={mockupId} className='laptopMockup h-[550px] max-[1024px]:h-[450px] featureMockups opacity-0 -translate-x-full'>
+      <div id={mockupParentId} className="laptopMockup relative h-[60%] max-[700px]:h-auto flex items-center justify-center">
+        <div id={mockupId} className='laptopMockup h-[550px] max-[1024px]:h-[450px] featureMockups opacity-0 min-[700px]:-translate-x-full'>
           <img src={LaptopMockup} alt="Chef Charm" className="w-full z-20 object-center relative" />
         </div>
       </div>
@@ -51,7 +51,7 @@ function ListSetFeatures({LaptopMockup,mockupParentId,mockupId,headingId,listId,
         <div style={{ padding:"1rem", position:"relative",height:"50%"}} className=' flex flex-col justify-center'>
           <div className='relative min-w-[465px] max-[1024px]:min-w-[310px] max-[700px]:top-0'>
 
-            <div className="relative whatIs translate-x-1/2 opacity-0 featureHeading" id={headingId}>
+            <div className="relative whatIs min-[700px]:translate-x-1/2 opacity-0 featureHeading" id={headingId}>
               {heading}
             </div>
           </div>
@@ -60,13 +60,13 @@ function ListSetFeatures({LaptopMockup,mockupParentId,mockupId,headingId,listId,
              {isTech? 
                 listArray.map((listItem,index) => {
                   return (
-                     <li key={index} className='mb-4 translate-x-1/2 opacity-0'><strong>{listItem.title}:</strong> {listItem.text}</li>
+                     <li key={index} className='mb-4 min-[700px]:translate-x-1/2 opacity-0'><strong>{listItem.title}:</strong> {listItem.text}</li>
                   )
                 })
              :
                 listArray.map((listItem,index) => {
                   return (
-                     <li key={index} className='mb-4 translate-x-1/2 opacity-0'>{listItem}</li>
+                     <li key={index} className='mb-4 min-[700px]:translate-x-1/2 opacity-0'>{listItem}</li>
                   )
                 })
              }

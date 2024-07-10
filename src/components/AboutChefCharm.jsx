@@ -83,14 +83,17 @@ function AboutChefCharm2({height}) {
         tl.to("#mockup1", {
           duration: 0.5,
           position: position(screenCategory),
-          top:"3rem",
+          top:screenCategory ==="mq500" || screenCategory ==="mq700"? "0":"3rem",
           left:"0",
           translateX:0,
           opacity:1
         })
-        .to("#bgGifLottie2", { duration: 0.5, rotate:90,
-          scale:0.7,
-          top:bgGifY(screenCategory).bgGifTopIntro,translateX:"-40%",translateY: 0 },"<")
+        .to("#bgGifLottie2", { duration: 0.5, 
+          rotate:screenCategory ==="mq500" || screenCategory ==="mq700"? 180:90,
+          scale:screenCategory ==="mq500" || screenCategory ==="mq700"? 0.9:0.7,
+          top:bgGifY(screenCategory).bgGifTopIntro,
+          translateX:screenCategory ==="mq500" || screenCategory ==="mq700"? "0":"-40%",
+          translateY: 0 },"<")
         .to("#bgGif2",{
           duration: 0.5,
           // top:"-16rem",
@@ -178,7 +181,10 @@ function AboutChefCharm2({height}) {
         gsap.to(".bgGradient2",{
           duration: 2,
           ease: "power4.out",
-          background:bgGradient2("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
+          background:bgGradient2("linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 150%)",
+            
+            "linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
+          // background:"linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)"
         }).restart()
       },
       onLeaveBack:()=>{
@@ -186,7 +192,8 @@ function AboutChefCharm2({height}) {
         gsap.to(".bgGradient2",{
           duration: 2,
           ease: "power4.out",
-          background: bgGradient2("linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)","linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)",screenCategory)
+          // background: bgGradient2("linear-gradient(268deg, rgb(0, 0, 0) 0%, rgb(79, 29, 7) 50%, rgb(79, 29, 7) 100%)","linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)",screenCategory)
+          background:"linear-gradient(90deg, #B9B9B9 0%, #FFD9D9 60%)"
         }).restart()
       }
     })
@@ -204,7 +211,8 @@ function AboutChefCharm2({height}) {
         gsap.to(".bgGradient2",{
           duration: 2,
           ease: "power4.out",
-          background:bgGradient2("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
+          // background:bgGradient2("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
+          background:"linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)"
         }).restart()
       },
       onLeaveBack:()=>{
@@ -212,7 +220,8 @@ function AboutChefCharm2({height}) {
         gsap.to(".bgGradient2",{
           duration: 2,
           ease: "power4.out",
-          background: bgGradient2("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
+          // background: bgGradient2("linear-gradient(271deg, rgb(0, 0, 0) 0%, rgb(29, 7, 79) 64%, rgb(63, 0, 206) 100%)","linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 60%)",screenCategory)
+          background:"linear-gradient(90deg, rgb(255, 220, 229) 0%, rgb(160, 185, 255) 150%)"
         }).restart()
       }
     })
@@ -255,7 +264,8 @@ function AboutChefCharm2({height}) {
       gsap.to(".bgGradient2",{
         duration: 2,
         ease: "power4.out",
-        background:bgGradient2("linear-gradient(85deg, rgb(112, 255, 0) 0%, rgb(21, 21, 21) 64%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #A7CDFF 0%, #FFECCF 100%)",screenCategory)
+        // background:bgGradient2("linear-gradient(85deg, rgb(112, 255, 0) 0%, rgb(21, 21, 21) 64%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #A7CDFF 0%, #FFECCF 100%)",screenCategory)
+        background:"linear-gradient(90deg, #A7CDFF 0%, #FFECCF 100%)"
       }).restart()
        
       },
@@ -264,7 +274,8 @@ function AboutChefCharm2({height}) {
         gsap.to(".bgGradient2",{
           duration: 2,
           ease: "power4.out",
-          background: bgGradient2("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
+          // background: bgGradient2("linear-gradient(85deg, rgb(186, 6, 26) 0%, rgb(21, 21, 21) 50%, rgb(0, 0, 0) 100%)","linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)",screenCategory)
+          background:"linear-gradient(90deg, #c4c5ff 0%, #FCD2FF 60%)"
         }).restart()
 
         let timeline2 = gsap.timeline()

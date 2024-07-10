@@ -14,7 +14,7 @@ function Ellipse({height,idName}) {
     // Initialize mq state with the current matchMedia result
     
   return (
-    <div className={`z-10 fixed top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden max-[700px]:hidden ellipseParent`}  style={{
+    <div className={`z-10 fixed top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden ellipseParent`}  style={{
       height: height,
       minHeight: '100vh',
     }}>

@@ -43,13 +43,12 @@ function AnimationProvider({children}) {
   }, []);
   function bgGifY(screenCategory) {
     if(screenCategory === 'mq500') {
-      
-      let bgGifTop = "60vh";
-      let bgGifTopIntro = "40vh";
+      let bgGifTop = "100vh";
+      let bgGifTopIntro = "35vh";
       return {bgGifTop,bgGifTopIntro}
     }else if(screenCategory === 'mq700') {
-      let bgGifTop = "55vh";
-      let bgGifTopIntro = "40vh";
+      let bgGifTop = "100vh";
+      let bgGifTopIntro = "35vh";
       return {bgGifTop,bgGifTopIntro}
     }
     else if(screenCategory === 'mq1024') {

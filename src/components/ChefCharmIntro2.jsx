@@ -84,7 +84,7 @@ function ChefCharmIntro2() {
     }, [screenCategory, tl2Global, translateYValues]); 
   return (
     <div className="relative z-10 text-white h-screen p-4 overflow-hidden max-w-[1600px] mx-auto opacity-100" id="chefCharmIntro">
-      <div className="fixed top-44 w-full text-center text-white font-bold -translate-y-full opacity-0 flex gap-6 max-[700px]:gap-0 items-center left-1/2 -translate-x-1/2 justify-center p-4" style={{
+      <div className="fixed top-44 w-full text-center text-white font-bold max-[700px]:font-semibold -translate-y-full opacity-0 flex gap-6 max-[700px]:gap-2 items-center left-1/2 -translate-x-1/2 justify-center p-4" style={{
         zIndex: 100
       }} id={"getStarted"}>
         <PiArrowFatLineDownFill className='scrollArrow' style={{
