@@ -313,8 +313,8 @@ function AboutChefCharm2({height}) {
      </div>
       <div className='absolute top-0 left-0 w-full h-full opacity-100 bgGradient2 z-30'></div>
 
-      <Ellipse height={height} idName={"ellipse2"} parentName='ellipseParent2' />
       <BackgroundGif height={height} idName='bgGif2' idLottie='bgGifLottie2'/>
+      <Ellipse height={height} idName={"ellipse2"} parentName='ellipseParent2' />
       <ListSet LaptopMockup={LaptopMockup} />
       <ListSetFeatures featureId={"feature1"} LaptopMockup={HomePage} heading={"Comprehensive Recipe Search"} listArray={featureList1} mockupParentId={"mockupParent3"} mockupId={"mockup3"} headingId={"heading3"} listId={"aboutList3"}/>
 
