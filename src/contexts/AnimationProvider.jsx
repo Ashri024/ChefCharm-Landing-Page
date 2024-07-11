@@ -11,7 +11,7 @@ AnimationProvider.propTypes = {
 function AnimationProvider({children}) {
   const translateYValues = {
     mq500: "-20%",
-    mq700: "-40%",
+    mq768: "-40%",
     mq1024: "-45%",
     mq1280: "-55%",
     default: "-63%",
@@ -20,12 +20,12 @@ function AnimationProvider({children}) {
     default:"40vh",
     mq1280:"50vh",
     mq1024:"60vh",
-    mq700:"55vh",
+    mq768:"55vh",
     mq500:"75vh"
   }
   const getScreenCategory = () => {
     if (window.matchMedia("(max-width: 500px)").matches) return 'mq500';
-    if (window.matchMedia("(max-width: 700px)").matches) return 'mq700';
+    if (window.matchMedia("(max-width: 768px)").matches) return 'mq768';
     if (window.matchMedia("(max-width: 1024px)").matches) return 'mq1024';
     if (window.matchMedia("(max-width: 1280px)").matches) return 'mq1280';
     return 'default';
@@ -46,7 +46,7 @@ function AnimationProvider({children}) {
       let bgGifTop = "100vh";
       let bgGifTopIntro = "35vh";
       return {bgGifTop,bgGifTopIntro}
-    }else if(screenCategory === 'mq700') {
+    }else if(screenCategory === 'mq768') {
       let bgGifTop = "100vh";
       let bgGifTopIntro = "35vh";
       return {bgGifTop,bgGifTopIntro}

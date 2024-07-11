@@ -51,9 +51,9 @@ function BackgroundGif({height, idName="bgGif", idLottie="bgGifLottie"}) {
             />
             </div>
         </div>
-        <div className=' absolute right-10 gap-2 items-center text-slate-600 text-xl font-semibold hover:text-black z-10 opacity-0 translate-x-full max-[700px]:hidden' id="scrollMore" style={{
+        <div className=' absolute right-10 gap-2 items-center text-slate-600 text-xl font-semibold hover:text-black z-10 opacity-0 translate-x-full max-[768px]:hidden' id="scrollMore" style={{
           top:'88vh',
-          display: idName !== 'bgGif' || screenCategory==="mq500" || screenCategory==="mq700" ? 'none' : 'flex'
+          display: idName !== 'bgGif' || screenCategory==="mq500" || screenCategory==="mq768" ? 'none' : 'flex'
         }}>
           <PiArrowFatLineDownFill className='scrollArrow' style={{
             fontSize: '1.8rem',

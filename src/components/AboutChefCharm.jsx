@@ -35,13 +35,13 @@ function ellipse2Translate(screenCategory){
   }
 }
 function bgGradient2(gradient1, gradient2,screen){
-  if(screen === 'mq700' || screen === 'mq500'){
+  if(screen === 'mq768' || screen === 'mq500'){
     return gradient1
   }
     return gradient2
 }
 function position(screen){
-  if(screen === 'mq700' || screen === 'mq500'){
+  if(screen === 'mq768' || screen === 'mq500'){
     return "absolute"
   }
     return "fixed"
@@ -70,6 +70,7 @@ function AboutChefCharm2({height}) {
 
     let tl= gsap.timeline({defaults: { ease: "power4.out" }});
    
+    let tlTemp = gsap.timeline({defaults:{ease:"power4.out"}})
 
     ScrollTrigger.create({
       // animation: tl,
@@ -84,16 +85,18 @@ function AboutChefCharm2({height}) {
         tl.to("#mockup1", {
           duration: 0.5,
           position: position(screenCategory),
-          top:screenCategory ==="mq500" || screenCategory ==="mq700"? "0":"3rem",
+          top:screenCategory ==="mq500" || screenCategory ==="mq768"? "0":"3rem",
           left:"0",
           translateX:0,
           opacity:1
         })
-        .to("#bgGifLottie2", { duration: 0.5, 
-          rotate:screenCategory ==="mq500" || screenCategory ==="mq700"? 180:90,
-          scale:screenCategory ==="mq500" || screenCategory ==="mq700"? 0.9:0.7,
+        .to("#heading1", { duration: 0.5, opacity: 1, translateX: 0 },"<")
+        .to("#aboutList li", { duration: 0.5, opacity: 1, translateX: 0, stagger: 0.1 },"<")
+        tlTemp.to("#bgGifLottie2", { duration: 0.5, 
+          rotate:screenCategory ==="mq500" || screenCategory ==="mq768"? 180:90,
+          scale:screenCategory ==="mq500" || screenCategory ==="mq768"? 0.9:0.7,
           top:bgGifY(screenCategory).bgGifTopIntro,
-          translateX:screenCategory ==="mq500" || screenCategory ==="mq700"? "0":"-40%",
+          translateX:screenCategory ==="mq500" || screenCategory ==="mq768"? "0":"-40%",
           translateY: 0 },"<")
         .to("#bgGif2",{
           duration: 0.5,
@@ -101,13 +104,12 @@ function AboutChefCharm2({height}) {
           opacity:1,
           ease: "power1.in"
         }, "<")
-        .to("#heading1", { duration: 0.5, opacity: 1, translateX: 0 },"<")
-        .to("#aboutList li", { duration: 0.5, opacity: 1, translateX: 0, stagger: 0.1 },"<")
+        tlTemp.restart()
         tl.restart()
         gsap.killTweensOf(".ellipse2")
         gsap.set(".ellipseParent2, #bgGif2",{
+          // duration:0.5,
           position: "fixed",
-          immediateRender:true
         })
         gsap.to(".ellipse2", { duration: 0.5, translateX: ellipse2Translate(screenCategory).translateX,
           translateY: ellipse2Translate(screenCategory).translateY,rotate: 180, ease: "power4.inOut",
@@ -120,9 +122,10 @@ function AboutChefCharm2({height}) {
         console.log("AboutChefCharm2 left back")
         console.log(document.querySelector(".ellipse2").style.transform)
         tl.timeScale(3).reverse()
-        gsap.set(".ellipseParent2,#bgGif2",{
+        tlTemp.timeScale(3).reverse()
+        // gsap.killTweensOf(".ellipseParent2, #bgGif2")
+        gsap.set(".ellipseParent2, #bgGif2",{
           position: "absolute",
-          immediateRender:true
         })
         gsap.killTweensOf(".ellipse2")
         gsap.to(".ellipse2", { duration: 1, rotate: 90, translateX:"100%", ease: "power4.inOut",})
@@ -138,7 +141,7 @@ function AboutChefCharm2({height}) {
         const offsetTop = mockupRect.top - parentRect.top;
         topOffset=offsetTop;
         tl.pause()
-        if(screenCategory !== 'mq700' && screenCategory !== 'mq500'){
+        if(screenCategory !== 'mq768' && screenCategory !== 'mq500'){
           gsap.set("#mockup1", {
             position: "absolute",
             duration: 1,
@@ -150,7 +153,7 @@ function AboutChefCharm2({height}) {
         console.log("AboutChefCharm2 left")
       },
       onEnterBack: () => {
-        if(screenCategory !== 'mq700' && screenCategory !== 'mq500'){
+        if(screenCategory !== 'mq768' && screenCategory !== 'mq500'){
         gsap.set("#mockup1", {
           position:"fixed",
           top:"3rem",

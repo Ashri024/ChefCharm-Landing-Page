@@ -4,7 +4,6 @@ import trees from '../assets/trees.png'
 import billboard from '../assets/billboard.png'
 import ChefCharmTitle from '../assets/ChefcharmTItle.png'
 import Clouds from '../assets/Clouds.png'
-
 Ellipse.propTypes = {
   height: PropTypes.string,
   idName: PropTypes.string,

@@ -48,7 +48,7 @@ function AboutChefCharm2() {
          gsap.to("#aboutList", { duration: 1, opacity: 1, }, "<")
          console.log('onEnter aboutChefCharm')
          await onChangeEnterAnimation("<span id='whatIs'>What actually is <br><span>ChefCharm</span> ?</span>",typewriter,typeRef)
-         if(screenCategory !== 'mq700' && screenCategory !== 'mq500'){
+         if(screenCategory !== 'mq768' && screenCategory !== 'mq500'){
           gsap.to(".bgGradient",{
             duration: 2,
             ease: "power4.out",
@@ -66,7 +66,7 @@ function AboutChefCharm2() {
         tl3.timeScale(2).reverse()
         typewriter.deleteAll(1);
         console.log("progress tl4: ",tl4.progress())
-        if(screenCategory !== 'mq700' && screenCategory !== 'mq500'){
+        if(screenCategory !== 'mq768' && screenCategory !== 'mq500'){
           gsap.to(".bgGradient",{
             duration: 2,
             ease: "power4.out",
@@ -146,7 +146,7 @@ function AboutChefCharm2() {
        .to(("#aboutList2 li"), { duration: 1, opacity: 0, translateX: "-100%", stagger:0.5 }, "<")
        .to(("#aboutList3 li"), { duration: 1, opacity: 1, translateX: 0, stagger:0.5 }, "<")
        
-       if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+       if(screenCategory === 'mq768' || screenCategory === 'mq500'){
         gsap.to(".bgGradient",{
           duration: 2,
           ease: "power4.out",
@@ -164,7 +164,7 @@ function AboutChefCharm2() {
        onLeaveBack:async()=> {
         console.log('onLeaveBack featuresPart1')
         await onChangeEnterAnimation("<span id='whatIs'>What actually are its <br><span>Features</span> ?</span>",typewriter,typeRef)
-        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+        if(screenCategory === 'mq768' || screenCategory === 'mq500'){
           gsap.to(".bgGradient",{
             duration: 2,
             ease: "power4.out",
@@ -253,7 +253,7 @@ function AboutChefCharm2() {
         console.log('onEnter ', "techStacks")
        await onChangeEnterAnimation("<span id='featureHeading'>What Tech Stack Has Been Used?:</span>",typewriter,typeRef)
        gsap.killTweensOf(tl3)
-       if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+       if(screenCategory === 'mq768' || screenCategory === 'mq500'){
         gsap.to(".bgGradient",{
           duration: 2,
           ease: "power4.out",
@@ -281,7 +281,7 @@ function AboutChefCharm2() {
        onLeaveBack:async()=> {
         console.log('onLeaveBack ', "techStacks")
         await onChangeEnterAnimation("<span id='featureHeading'>User-Friendly Experience:</span>",typewriter,typeRef)
-        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+        if(screenCategory === 'mq768' || screenCategory === 'mq500'){
           gsap.to(".bgGradient",{
             duration: 2,
             ease: "power4.out",
@@ -350,7 +350,7 @@ function ellipseTop(){
       .to("#bgGifLottie", { duration: 1, rotate:180,top:"60vh",translateX:0,translateY: 0 },"<")
        .to((`#aboutList8 li`), { duration: 1, opacity: 0, translateX: "-100%", stagger:0.2 }, "<")
        .to(("#mockup7"), { duration: 1, opacity: 0, translateY: "-100%", scale:0.2 }, "<")
-       if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+       if(screenCategory === 'mq768' || screenCategory === 'mq500'){
         gsap.to(".bgGradient",{
           duration: 2,
           ease: "power4.out",
@@ -367,7 +367,7 @@ function ellipseTop(){
        onLeaveBack:async()=> {
         console.log('onLeaveBack ', "finalPage")
         await onChangeEnterAnimation("<span id='featureHeading'>What Tech Stack Has Been Used?:</span>",typewriter,typeRef)
-        if(screenCategory === 'mq700' || screenCategory === 'mq500'){
+        if(screenCategory === 'mq768' || screenCategory === 'mq500'){
           gsap.to(".bgGradient",{
             duration: 2,
             ease: "power4.out",
@@ -403,8 +403,8 @@ function ellipseTop(){
 
   return (
     <div className="h-screen opacity-100 transparent w-full relative z-[70]" id="aboutChefCharm">
-      <div className="h-screen transparent w-full fixed z-50 overflow-hidden flex items-center justify-around top-0 left-0 max-[700px]:flex-col pt-12" >
-      <div id="laptopMockup" style={{ translate: "-100% 0",opacity:0 }} className="relative left-2 sm:-left-2 h-[550px] max-[1024px]:h-[450px] min-[700px]:-top-12">
+      <div className="h-screen transparent w-full fixed z-50 overflow-hidden flex items-center justify-around top-0 left-0 max-[768px]:flex-col pt-12" >
+      <div id="laptopMockup" style={{ translate: "-100% 0",opacity:0 }} className="relative left-2 sm:-left-2 h-[550px] max-[1024px]:h-[450px] min-[768px]:-top-12">
         <img id="mockup1" src={LaptopMockup} alt="Chef Charm" className="w-full z-20 object-center absolute top-1/2 -translate-y-1/2 left-0" />
         <img id="mockup2" src={HomePage} alt="Chef Charm" className="w-full z-20 object-center absolute top-1/2 -translate-y-1/2 left-0 opacity-0 -translate-x-full hidden" />
         <img id ="mockup3" src={RecipeMethod} alt="Chef Charm" className="w-full z-20 object-center absolute top-1/2 -translate-y-1/2 left-0 opacity-0 -translate-x-full hidden" />
@@ -413,48 +413,48 @@ function ellipseTop(){
         <img id ="mockup6" src={colotThemes} alt="Chef Charm" className="w-full z-20 object-center absolute top-1/2 -translate-y-1/2 left-0 opacity-0 -translate-x-full hidden" />
         <img id ="mockup7" src={teckStack2} alt="Chef Charm" className="w-full z-20 object-center absolute top-1/2 -translate-y-1/2 left-0 opacity-0 -translate-x-full" />
       </div>
-      <div className='w-full min-[700px]:w-2/3 max-w-[540px]' style={{ height: "90%",position:"relative",padding:"1rem"}}>
-        <div ref={typeRef} className="opacity-0 translate-x-full relative top-8 left-0 min-w-[450px] max-[1024px]:min-w-[350px] max-[700px]:top-0" id="typewriter"/>
-        <div className='relative mt-2 min-[700px]:mt-4'>
-          <ul id="aboutList" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[700px]:max-w-full">
+      <div className='w-full min-[768px]:w-2/3 max-w-[540px]' style={{ height: "90%",position:"relative",padding:"1rem"}}>
+        <div ref={typeRef} className="opacity-0 translate-x-full relative top-8 left-0 min-w-[450px] max-[1024px]:min-w-[350px] max-[768px]:top-0" id="typewriter"/>
+        <div className='relative mt-2 min-[768px]:mt-4'>
+          <ul id="aboutList" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[768px]:max-w-full">
             <li className='opacity-0 translate-x-full mb-4'>It is an innovative recipe web application designed to elevate your cooking experience. </li>
             <li className='opacity-0 translate-x-full mb-4'>It offers a seamless and interactive way to discover, create, and manage recipes, leveraging advanced technologies.</li>
             <li className='opacity-0 translate-x-full mb-4'>It uses AI to bring culinary inspiration to your fingertips.</li>
           </ul>
-          <ul id="aboutList2" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[700px]:max-w-full">
+          <ul id="aboutList2" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[768px]:max-w-full">
             <li className='opacity-0 translate-x-full mb-4'>Whether you&apos;re a professional chef or an enthusiastic home cook, ChefCharm offers a comprehensive suite of features to streamline your recipe discovery, creation, and organization. </li>
             <li className='opacity-0 translate-x-full mb-4'>Let&apos;s delve into the key features that make ChefCharm a must-have tool for every cooking enthusiast</li>
           </ul>
-          <ul id="aboutList3" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[700px]:max-w-full hidden">
+          <ul id="aboutList3" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[768px]:max-w-full hidden">
             <li className='opacity-0 translate-x-full mb-4'>ChefCharm leverages the power of the Edamam API to offer a vast collection of recipes from various cuisines. </li>
             <li className='opacity-0 translate-x-full mb-4'>Users can easily search for recipes using keywords, and the app provides auto-suggestions after typing three or more characters. </li>
             <li className='opacity-0 translate-x-full mb-4'>Additionally, users can refine their searches by applying filters based on meal types, cuisine types and dish types. </li>
           </ul>
-          <ul id="aboutList4" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[700px]:max-w-full hidden">
+          <ul id="aboutList4" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[768px]:max-w-full hidden">
             <li className='opacity-0 translate-x-full mb-4'>ChefCharm offers multiple ways to create and add recipes to your collection. </li>
             <li className='opacity-0 translate-x-full mb-4'>Users can import recipes from websites, PDFs, and images, making it easy to digitize favourite recipes. </li>
             <li className='opacity-0 translate-x-full mb-4'>
             Manual recipe creation is also provided. Additionally, Chef Gemini, also helps craft new recipes with suggestions, making it easy for everyone to cook delicious meals.</li>
           </ul>
-          <ul id="aboutList5" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[700px]:max-w-full hidden">
+          <ul id="aboutList5" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[768px]:max-w-full hidden">
             <li className='opacity-0 translate-x-full mb-4'>Managing your recipe collection is a breeze with ChefCharm. </li>
             <li className='opacity-0 translate-x-full mb-4'>Users can save their rehcipes, add them to their saved and favourite lists separately, edit them to suit personal preferences, and add notes for future reference.  </li>
             <li className='opacity-0 translate-x-full mb-4'>
             The app also tracks your recipe history, allowing you to revisit previously explored recipes. For added convenience, ChefCharm also offers random recipe suggestions.</li>
           </ul>
-          <ul id="aboutList6" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[700px]:max-w-full hidden">
+          <ul id="aboutList6" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[768px]:max-w-full hidden">
             <li className='opacity-0 translate-x-full mb-4'>Users can add ingredients from any recipe directly to their shopping list, ensuring they never miss an item while at the store. </li>
             <li className='opacity-0 translate-x-full mb-4'>The app also allows for meal planning on specific dates, helping users organize their cooking schedule efficiently. </li>
             <li className='opacity-0 translate-x-full mb-4'>
             Additionally, inbuilt timers are provided to manage cooking times</li>
           </ul>
-          <ul id="aboutList7" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[700px]:max-w-full hidden">
+          <ul id="aboutList7" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[768px]:max-w-full hidden">
             <li className='opacity-0 translate-x-full mb-4'>ChefCharm is designed with the user in mind, offering a seamless and personalized experience. </li>
             <li className='opacity-0 translate-x-full mb-4'>Users can log in using their Google, Facebook, or email/password credentials, providing flexible and secure access options.  </li>
             <li className='opacity-0 translate-x-full mb-4'>
             The app also features three distinct themes, allowing users to customize the interface according to their aesthetic preferences.</li>
           </ul>
-          <ul id="aboutList8" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[700px]:max-w-full">
+          <ul id="aboutList8" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[768px]:max-w-full">
             <li className='opacity-0 translate-x-full mb-4'><strong>Frontend:</strong> React, MUI, Tailwind CSS. </li>
             <li className='opacity-0 translate-x-full mb-4'><strong>Backend:</strong> Node.js, Express.js </li>
             <li className='opacity-0 translate-x-full mb-4'><strong>Database:</strong> MongoDB, Mongoose </li>
