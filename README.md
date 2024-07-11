@@ -1,4 +1,4 @@
 # ChefCharm Landing Page
 
-Created using React, CSS, jQuery, Tailwind, SCSS, GSAP
+Created using React, Tailwind, SCSS, GSAP
 
