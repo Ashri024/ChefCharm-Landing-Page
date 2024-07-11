@@ -404,7 +404,7 @@ function ellipseTop(){
   return (
     <div className="h-screen opacity-100 transparent w-full relative z-[70]" id="aboutChefCharm">
       <div className="h-screen transparent w-full fixed z-50 overflow-hidden flex items-center justify-around top-0 left-0 max-[768px]:flex-col pt-12" >
-      <div id="laptopMockup" style={{ translate: "-100% 0",opacity:0 }} className="relative left-2 sm:-left-2 h-[550px] max-[1024px]:h-[450px] min-[768px]:-top-12">
+      <div id="laptopMockup" style={{ translate: "-100% 0",opacity:0 }} className="relative left-2 sm:-left-2 h-[550px] max-[1024px]:h-[450px] min-[769px]:-top-12">
         <img id="mockup1" src={LaptopMockup} alt="Chef Charm" className="w-full z-20 object-center absolute top-1/2 -translate-y-1/2 left-0" />
         <img id="mockup2" src={HomePage} alt="Chef Charm" className="w-full z-20 object-center absolute top-1/2 -translate-y-1/2 left-0 opacity-0 -translate-x-full hidden" />
         <img id ="mockup3" src={RecipeMethod} alt="Chef Charm" className="w-full z-20 object-center absolute top-1/2 -translate-y-1/2 left-0 opacity-0 -translate-x-full hidden" />
@@ -413,9 +413,9 @@ function ellipseTop(){
         <img id ="mockup6" src={colotThemes} alt="Chef Charm" className="w-full z-20 object-center absolute top-1/2 -translate-y-1/2 left-0 opacity-0 -translate-x-full hidden" />
         <img id ="mockup7" src={teckStack2} alt="Chef Charm" className="w-full z-20 object-center absolute top-1/2 -translate-y-1/2 left-0 opacity-0 -translate-x-full" />
       </div>
-      <div className='w-full min-[768px]:w-2/3 max-w-[540px]' style={{ height: "90%",position:"relative",padding:"1rem"}}>
+      <div className='w-full min-[769px]:w-2/3 max-w-[540px]' style={{ height: "90%",position:"relative",padding:"1rem"}}>
         <div ref={typeRef} className="opacity-0 translate-x-full relative top-8 left-0 min-w-[450px] max-[1024px]:min-w-[350px] max-[768px]:top-0" id="typewriter"/>
-        <div className='relative mt-2 min-[768px]:mt-4'>
+        <div className='relative mt-2 min-[769px]:mt-4'>
           <ul id="aboutList" className="absolute top-0 left-0 max-w-[90%] featuresAboutList max-[768px]:max-w-full">
             <li className='opacity-0 translate-x-full mb-4'>It is an innovative recipe web application designed to elevate your cooking experience. </li>
             <li className='opacity-0 translate-x-full mb-4'>It offers a seamless and interactive way to discover, create, and manage recipes, leveraging advanced technologies.</li>
