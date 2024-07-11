@@ -15,6 +15,7 @@ import listAndMealPlanner from '../assets/listAndMealPlanner.png';
 import teckStack2 from '../assets/techStackFinal.png';
 import FinalPage from './FinalPage';
 import BackgroundGif from './BackgroundGif';
+import ContentBox from './ContentBox';
 
 AboutChefCharm2.propTypes = {
   height: PropTypes.string,
@@ -104,8 +105,14 @@ function AboutChefCharm2({height}) {
         .to("#aboutList li", { duration: 0.5, opacity: 1, translateX: 0, stagger: 0.1 },"<")
         tl.restart()
         gsap.killTweensOf(".ellipse2")
-        gsap.to(".ellipse2", { duration: 0.5, translateX: ellipse2Translate(screenCategory).translateX,translateY: ellipse2Translate(screenCategory).translateY,rotate: 180, ease: "power4.inOut",
-          background:"linear-gradient(270deg, #000000 0%, #4F1D07 40%, #4F1D07 100%)"
+        gsap.set(".ellipseParent2, #bgGif2",{
+          position: "fixed",
+          immediateRender:true
+        })
+        gsap.to(".ellipse2", { duration: 0.5, translateX: ellipse2Translate(screenCategory).translateX,
+          translateY: ellipse2Translate(screenCategory).translateY,rotate: 180, ease: "power4.inOut",
+          background:"linear-gradient(270deg, #000000 0%, #4F1D07 40%, #4F1D07 100%)",
+          // position:
           })
         console.log("AboutChefCharm2 entered")
       },
@@ -113,7 +120,10 @@ function AboutChefCharm2({height}) {
         console.log("AboutChefCharm2 left back")
         console.log(document.querySelector(".ellipse2").style.transform)
         tl.timeScale(3).reverse()
-
+        gsap.set(".ellipseParent2,#bgGif2",{
+          position: "absolute",
+          immediateRender:true
+        })
         gsap.killTweensOf(".ellipse2")
         gsap.to(".ellipse2", { duration: 1, rotate: 90, translateX:"100%", ease: "power4.inOut",})
         // }
@@ -295,8 +305,12 @@ function AboutChefCharm2({height}) {
 
   return (
     <div className=" opacity-100 transparent w-full relative z-[70]" >
-      <div className='absolute top-0 left-0 w-full h-full opacity-100 bgGradient2'></div>
-      <Ellipse height={height} idName={"ellipse2"} />
+      <div className='relative w-full h-full z-20'>
+     <ContentBox/>
+     </div>
+      <div className='absolute top-0 left-0 w-full h-full opacity-100 bgGradient2 z-30'></div>
+
+      <Ellipse height={height} idName={"ellipse2"} parentName='ellipseParent2' />
       <BackgroundGif height={height} idName='bgGif2' idLottie='bgGifLottie2'/>
       <ListSet LaptopMockup={LaptopMockup} />
       <ListSetFeatures featureId={"feature1"} LaptopMockup={HomePage} heading={"Comprehensive Recipe Search"} listArray={featureList1} mockupParentId={"mockupParent3"} mockupId={"mockup3"} headingId={"heading3"} listId={"aboutList3"}/>

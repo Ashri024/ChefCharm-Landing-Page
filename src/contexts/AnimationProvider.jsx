@@ -52,17 +52,17 @@ function AnimationProvider({children}) {
       return {bgGifTop,bgGifTopIntro}
     }
     else if(screenCategory === 'mq1024') {
-      let bgGifTop = "50vh";
+      let bgGifTop = "60vh";
       let bgGifTopIntro = "30vh";
       return {bgGifTop,bgGifTopIntro}
     }
     else if(screenCategory === 'mq1280') {
-      let bgGifTop = "40vh";
+      let bgGifTop = "50vh";
       let bgGifTopIntro = "45vh";
       return {bgGifTop,bgGifTopIntro}
     }
     else {
-      let bgGifTop = "30vh";
+      let bgGifTop = "40vh";
       let bgGifTopIntro = "48vh";
       return {bgGifTop,bgGifTopIntro}
     }

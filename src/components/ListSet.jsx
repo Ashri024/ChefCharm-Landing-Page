@@ -34,7 +34,7 @@ function ListSet({LaptopMockup}) {
           <div className=' relative min-w-[465px] max-[1024px]:min-w-[310px] max-[700px]:top-0 '>
 
             <div className="relative whatIs min-[700px]:translate-x-1/2 opacity-0" id="heading2">
-              What Actually are its <br/><span>Features</span> ?
+              What are its different<br/><span>Features</span> ?
             </div>
           </div>
           <div className='relative mt-2 min-[700px]:mt-4'>

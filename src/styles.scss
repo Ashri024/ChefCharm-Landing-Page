@@ -101,7 +101,7 @@ html{
 .contentUl{
     span{
         position: relative;   
-    
+        display: block;
         &::after{
             content: "";
             position: absolute;
@@ -110,7 +110,6 @@ html{
             width: 0%;
             height: 2px;
             background: $primaryColor;
-            // box-shadow: 0 5px 5px rgb(0 0 0 / 80%);
             transition: $primaryTransition;
         }
 
@@ -118,8 +117,9 @@ html{
             width: 100%;
         }
     }
-    li{
+    a{
         transition: $primaryTransition;
+        // display: block;
         &:hover{
             color: $primaryColor;
             transform: translateX(5px);
@@ -290,7 +290,7 @@ html{
             font-size: 2.3rem;
         }
     }
-    .ellipse2{
+.ellipse2{
         display: none;
     }
     #aboutChefCharm{

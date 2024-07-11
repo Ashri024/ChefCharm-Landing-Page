@@ -8,18 +8,19 @@ import Clouds from '../assets/Clouds.png'
 Ellipse.propTypes = {
   height: PropTypes.string,
   idName: PropTypes.string,
+  parentName: PropTypes.string
 }
 
-function Ellipse({height,idName}) {
+function Ellipse({height,idName,parentName="ellipseParent"}) {
     // Initialize mq state with the current matchMedia result
-    
   return (
-    <div className={`z-10 fixed top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden ellipseParent`}  style={{
+    <div className={`top-0 left-0 right-0 bottom-0 max-w-[1600px] mx-auto overflow-hidden  ${parentName!=="ellipseParent"?"z-40 absolute":"z-10 fixed"} ${parentName}`}  style={{
       height: height,
       minHeight: '100vh',
     }}>
       <img src={Clouds} alt="Clouds" className='absolute top-8 left-0 w-full object-cover object-center clouds z-0 trees opacity-0'/>
-      <div className={`bgGradientEllipse ${idName} relative rounded-full z-10`}>
+      <div className={`bgGradientEllipse 
+        ${idName} relative rounded-full z-10`}>
         <img src={ChefCharmTitle} alt="ChefCharmTitle" className='absolute -top-[150px] left-1/2 -translate-x-1/2 w-[250px] object-center trees z-[50] opacity-0'/>
         <img src={billboard} alt="billboard" className='absolute trees -top-[220px] left-1/2 -translate-x-1/2 w-[350px] object-center trees z-10 opacity-0'/>
         <img src={trees} alt="trees" className='absolute -top-[110px] scale-[0.9] left-0 w-full object-center trees z-10 opacity-0'/>

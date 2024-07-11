@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { Ellipse,ChefCharmIntro2,Navigation ,BackgroundGif,NavigationOptions,ContentBox, AboutChefCharm} from './components'
+import { Ellipse,ChefCharmIntro2,Navigation ,BackgroundGif,NavigationOptions, AboutChefCharm} from './components'
 import gsap, { ScrollToPlugin } from 'gsap/all';
 function setHeightBgGradient() {
   const targetElement = document.querySelector('.bgGradient');
@@ -27,7 +27,6 @@ function App() {
     {/* <Experiment/> */}
      <Ellipse height={height} idName={"ellipse1"} />
     <BackgroundGif height={height}/>
-     <ContentBox/>
      <ChefCharmIntro2/>
      <div className="h-[300vh] opacity-50 transparent w-full relative z-50" id="introChefCharm">
     </div>
